@@ -1,0 +1,13 @@
+posible estructura
+
+0. intro
+Hic emi doctorado en...Se extienden los metodos a superficies de huesos. Tecnicas de beamforming, aberracion, etc
+1. Estado del arte: imagen preclinica, IA, beamforming avanzado.
+Microvascularización: ULM, fUS, SURE de Jensen
+
+2. NSI 2D, con datos de NERF. Truco de optimización. Preliminar 3D: patrón lateral campo lejano. Trabajo futuro: doppler
+3. Publicaciones. Enfasis en aplicaciones a imagen transcraneal, o reconstruccion de superficies oseas en general. TRabajos de Kerr sobre huesos.
+4. Propuesta iCOOP?
+
+
+Sintesis en castellano de los 3 articulos (chat gpt). Luego apendice con los pdf. 2 articulos nomás, el de pulmon es del año pasado.

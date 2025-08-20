@@ -1,0 +1,79 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color,soul}
+\usepackage{easyReview}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[section]{placeins}
+\usepackage[hidelinks]{hyperref}
+\usepackage[backend=biber, style=numeric, citestyle=numeric-comp, sorting=none, hyperref=true, maxnames=20]{biblatex}
+\usepackage{tocbibind}
+\usepackage[a4paper, margin=30mm]{geometry}
+\usepackage{authblk}
+\usepackage{lineno}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage[none]{hyphenat}
+\usepackage{acronym}	
+\usepackage{nomencl}
+\usepackage{lineno}
+\usepackage[breakable]{tcolorbox}
+
+% para que no diga "chapter", y diga "capítulo"
+\usepackage[spanish]{babel}
+
+% \linenumbers
+
+%%% carpeta de figuras %%%%%%
+\graphicspath{{figs/}}
+
+\addbibresource{bibliog_2025.bib}
+
+%%%%%%%% algunas cosas para renderizar mejor las ecuaciones %%%%%%%%%%%%
+\DeclareMathSizes{10}{9}{7}{5}
+
+% overline con mas espacio entre letras y barra
+\newcommand*\oline[1]{%
+	\vbox{%
+		\hrule height 0.5pt%                  % Line above with certain width
+		\kern0.4ex%                          % Distance between line and content
+		\hbox{%
+			\kern-0.1em%                        % Distance between content and left side of box, negative values for lines shorter than content
+			\ifmmode#1\else\ensuremath{#1}\fi%  % The content, typeset in dependence of mode
+			\kern-0.1em%                        % Distance between content and left side of box, negative values for lines shorter than content
+		}% end of hbox
+	}% end of vbox
+}
+
+\newcommand{\norma}[1]{\left\|#1\right\|}
+\newcommand{\abector}[2]{\oline{#1#2}}
+\newcommand{\pdv}[2]{\dfrac{\partial #1}{\partial #2}}
+
+%\linenumbers
+
+\linespread{1.5} % espacio de interlineado
+% Set the space after paragraphs
+\setlength{\parskip}{1em} % Adjust the length as needed
+
+
+\title{Momentum \\ Tecnología de imagen multi-modal para investigación pre-clínica (TIMPRE) \\ Memoria anual 2025}
+\author{Guillermo G. Cosarinsky Markman}
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}	
+\maketitle
+
+\chapter{Introducción}
+Durante mi doctorado hice cosas de imagen 3D con array matricial en NDT blablabla
+En el este proyecto, imagen preclinica multimodal, ultrasonidos 3D, intersección de las disciplinas, NDT e imagen médica cosas en común blablablabla
+
+\section{Estado del arte}
+
+
+\end{document}
