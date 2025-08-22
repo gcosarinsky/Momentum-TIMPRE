@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{report}
+\documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
@@ -11,7 +11,8 @@
 \usepackage[section]{placeins}
 \usepackage[hidelinks]{hyperref}
 \usepackage[backend=biber, style=numeric, citestyle=numeric-comp, sorting=none, hyperref=true, maxnames=20]{biblatex}
-\usepackage{tocbibind}
+\usepackage[nottoc]{tocbibind} % la opcion nottoc hace que el indice no aparezca
+% en la tabla de contenidos
 \usepackage[a4paper, margin=30mm]{geometry}
 \usepackage{authblk}
 \usepackage{lineno}
@@ -23,8 +24,11 @@
 \usepackage{lineno}
 \usepackage[breakable]{tcolorbox}
 
-% para que no diga "chapter", y diga "capítulo"
-\usepackage[spanish]{babel}
+\usepackage[spanish]{babel} % para que no diga "chapter", y diga "capítulo"
+\usepackage{pdfpages} % Para insertar PDFs
+\usepackage{tabularx}
+
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 
 % \linenumbers
 
@@ -69,11 +73,71 @@
 \begin{document}	
 \maketitle
 
-\chapter{Introducción}
-Durante mi doctorado hice cosas de imagen 3D con array matricial en NDT blablabla
-En el este proyecto, imagen preclinica multimodal, ultrasonidos 3D, intersección de las disciplinas, NDT e imagen médica cosas en común blablablabla
+\tableofcontents
 
-\section{Estado del arte}
+\section{Introducción}\label{sec:intro}
+La presente memoria resume el trabajo realizado durante 2025 en el marco del proyecto TIMPRE, financiado por la convocatoria Momentum CSIC. El objetivo principal del proyecto es mi formación posdoctoral orientada al desarrollo de competencias digitales, a través de la participación activa en el diseño y avance de tecnología multimodal de imagen para investigación preclínica, en colaboración con los grupos participantes. Este entorno multidisciplinar, que integra experiencia en imagen médica entre los grupos de ITEFI y grupos externos, permite potenciar sinergias y aprovechar las oportunidades emergentes en el campo de la investigación biomédica.
 
+El grupo en el que trabajo se especializa en tecnologías de ultrasonido, y es en imagen ultrasónica donde se centra mi contribución principal. Otros investigadores con los que colaboramos aportan experiencia en técnicas complementarias como la tomografía por emisión de positrones (PET) y la imagen fotoacústica.
+
+La investigación preclínica constituye un pilar esencial en el desarrollo de nuevos fármacos y terapias, exigiendo tecnologías de imagen especializadas que superen en resolución y prestaciones a las empleadas en el entorno clínico. En este contexto, la imagen por ultrasonido destaca como una técnica versátil y bien establecida, capaz de proporcionar información anatómica y fisiológica en tiempo real, sin radiación ionizante y con costes relativamente bajos de adquisición y mantenimiento \cite{Moran2020}.
+
+La integración de ultrasonido con otras modalidades de imagen —como PET, resonancia magnética (MRI) y fotoacústica— permite obtener información complementaria sobre morfología, función y metabolismo en los modelos animales \cite{Wu2018, Rovera2025}. La fusión de estas técnicas incrementa la sensibilidad y especificidad de los estudios, abriendo nuevas posibilidades para el seguimiento de procesos biológicos complejos, la caracterización de patologías y la evaluación de terapias innovadoras. Este enfoque multimodal resulta clave para avanzar en la investigación preclínica y favorecer la futura transferencia de tecnologías al ámbito clínico.
+
+Esta memoria se organiza de la siguiente manera: en la sección \ref{sec:estado_arte} se presenta una reseña del estado del arte en tecnologías de imagen para investigación preclínica, poniendo especial énfasis en las técnicas de ultrasonido. La sección \ref{sec:nsi} describe la implementación del método de imagen ultrasónica Null Subtraction Imaging (NSI) \cite{Agarwal2019_NSI}, su aplicación a un conjunto de datos de imagen funcional cerebral de rata proporcionado por Neuro-Electronics Research Flanders (NERF), así como el trabajo preliminar orientado a extender el método a arrays matriciales. En la sección \ref{sec:publicaciones} se sintetizan los artículos publicados durante 2025, enfocados en el desarrollo de métodos para la obtención de \highlight{imágenes en sistemas con interfaces refractantes}. Finalmente, la sección \ref{sec:conclusiones} expone las principales conclusiones y las perspectivas de trabajo futuro.
+
+
+\highlight{Durante mi doctorado hice cosas de imagen 3D con array matricial en NDT blablabla
+En el este proyecto, imagen preclinica multimodal, ultrasonidos 3D, intersección de las disciplinas, NDT e imagen médica cosas en común blablablabla}
+
+\subsection{Estado del arte}\label{sec:estado_arte}
+
+\begin{table}[H]
+	\small
+	\centering
+	\caption{Resumen de métodos de imagen biomédica \cite{Bushberg2021}. Los acrónimos corresponden a los nombres en inglés, los cuales son los más comúnmente utilizados en la literatura científica.} 
+	\begin{tabularx}{\textwidth}{X|X|X}
+		\\
+		\hline
+		\textbf{Técnica (acrónimo)} & \textbf{Principio físico} & \textbf{Aplicaciones} \\
+		\hline\hline
+		Tomografía Computarizada (CT) & Rayos X & Anatomía, lesiones óseas, pulmón \\
+		\hline
+		Resonancia Magnética (MRI) & Campos magnéticos de radiofrecuencia & Cerebro, músculo, vasos sanguíneos, tejido blando \\
+		\hline
+		Tomografía por Emisión de Positrones (PET) & Radiotrazadores y detección de rayos gamma & Metabolismo, oncología, imagen funcional \\
+		\hline
+		Tomografía Computarizada por Emisión de Fotón Único (SPECT) & Radioisótopos y detección de rayos gamma & Cardiología, neurología, imagen funcional, perfusión tisular \\
+		\hline
+		Ultrasonido (US) & Ondas acústicas (ultrasonido) & Vasos sanguíneos, corazón, tejidos blandos, obstetricia \\
+		\hline
+		Fotoacústica (PA) & Excitación con luz láser y detección de ultrasonido & Oxigenación, angiogénesis, tumor, piel \\
+		\hline
+	\end{tabularx}
+	\label{tab:metodos-imagen}
+\end{table}
+
+
+
+\section{Desarrollos iniciales con el método de beamforming avanzado Null Subtraction Imaging (NSI)}\label{sec:nsi}
+
+\section{Publicaciones}\label{sec:publicaciones}
+
+\section{Conclusiones}\label{sec:conclusiones}
+
+\newpage
+\appendix
+
+% Apéndice A en página nueva, centrado y grande
+%\thispagestyle{empty} % Opcional: sin número de página
+\vspace*{\fill}
+\begin{center}
+	{\LARGE \textbf{Apéndice A}}
+\end{center}
+\vspace*{\fill}
+\newpage
+
+% Insertar el PDF en la siguiente página
+%\includepdf[pages=-]{paper_AIM.pdf}
 
 \end{document}

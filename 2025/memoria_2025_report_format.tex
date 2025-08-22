@@ -1,0 +1,88 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color,soul}
+\usepackage{easyReview}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[section]{placeins}
+\usepackage[hidelinks]{hyperref}
+\usepackage[backend=biber, style=numeric, citestyle=numeric-comp, sorting=none, hyperref=true, maxnames=20]{biblatex}
+\usepackage{tocbibind}
+\usepackage[a4paper, margin=30mm]{geometry}
+\usepackage{authblk}
+\usepackage{lineno}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage[none]{hyphenat}
+\usepackage{acronym}	
+\usepackage{nomencl}
+\usepackage{lineno}
+\usepackage[breakable]{tcolorbox}
+
+% para que no diga "chapter", y diga "capítulo"
+\usepackage[spanish]{babel}
+
+% \linenumbers
+
+%%% carpeta de figuras %%%%%%
+\graphicspath{{figs/}}
+
+\addbibresource{bibliog_2025.bib}
+
+%%%%%%%% algunas cosas para renderizar mejor las ecuaciones %%%%%%%%%%%%
+\DeclareMathSizes{10}{9}{7}{5}
+
+% overline con mas espacio entre letras y barra
+\newcommand*\oline[1]{%
+	\vbox{%
+		\hrule height 0.5pt%                  % Line above with certain width
+		\kern0.4ex%                          % Distance between line and content
+		\hbox{%
+			\kern-0.1em%                        % Distance between content and left side of box, negative values for lines shorter than content
+			\ifmmode#1\else\ensuremath{#1}\fi%  % The content, typeset in dependence of mode
+			\kern-0.1em%                        % Distance between content and left side of box, negative values for lines shorter than content
+		}% end of hbox
+	}% end of vbox
+}
+
+\newcommand{\norma}[1]{\left\|#1\right\|}
+\newcommand{\abector}[2]{\oline{#1#2}}
+\newcommand{\pdv}[2]{\dfrac{\partial #1}{\partial #2}}
+
+%\linenumbers
+
+\linespread{1.5} % espacio de interlineado
+% Set the space after paragraphs
+\setlength{\parskip}{1em} % Adjust the length as needed
+
+
+\title{Momentum \\ Tecnología de imagen multi-modal para investigación pre-clínica (TIMPRE) \\ Memoria anual 2025}
+\author{Guillermo G. Cosarinsky Markman}
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}	
+\maketitle
+
+\chapter{Introducción}
+La presente memoria resume el trabajo realizado durante 2025 en el marco del proyecto TIMPRE, financiado por la convocatoria Momentum CSIC. El objetivo principal del proyecto es mi formación posdoctoral orientada al desarrollo de competencias digitales, a través de la participación activa en el diseño y avance de tecnología multimodal de imagen para investigación preclínica, en colaboración con los grupos participantes. Este entorno multidisciplinar, que integra experiencia en imagen médica entre los grupos de ITEFI y grupos externos, permite potenciar sinergias y aprovechar las oportunidades emergentes en el campo de la investigación biomédica.
+
+El grupo en el que trabajo se especializa en tecnologías de ultrasonido, y es en imagen ultrasónica donde se centra mi contribución principal. Otros investigadores con los que colaboramos aportan experiencia en técnicas complementarias como la tomografía por emisión de positrones (PET) y la imagen fotoacústica.
+
+La investigación preclínica constituye un pilar esencial en el desarrollo de nuevos fármacos y terapias, exigiendo tecnologías de imagen especializadas que superen en resolución y prestaciones a las empleadas en el entorno clínico. En este contexto, la imagen por ultrasonido destaca como una técnica versátil y bien establecida, capaz de proporcionar información anatómica y fisiológica en tiempo real, sin radiación ionizante y con costes relativamente bajos de adquisición y mantenimiento \cite{Moran2020}.
+
+La integración de ultrasonido con otras modalidades de imagen —como PET, resonancia magnética (MRI) y fotoacústica— permite obtener información complementaria sobre morfología, función y metabolismo en los modelos animales \cite{Wu2018}. La fusión de estas técnicas incrementa la sensibilidad y especificidad de los estudios, abriendo nuevas posibilidades para el seguimiento de procesos biológicos complejos, la caracterización de patologías y la evaluación de terapias innovadoras. Este enfoque multimodal resulta clave para avanzar en la investigación preclínica y favorecer la futura transferencia de tecnologías al ámbito clínico.
+
+
+Durante mi doctorado hice cosas de imagen 3D con array matricial en NDT blablabla
+En el este proyecto, imagen preclinica multimodal, ultrasonidos 3D, intersección de las disciplinas, NDT e imagen médica cosas en común blablablabla
+
+\section{Estado del arte}
+
+
+\end{document}

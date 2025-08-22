@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{pdfpages} % Para insertar PDFs
+
+\begin{document}
+	
+	\section{Introducción}
+	Texto de la introducción.
+	
+	\newpage
+	\appendix
+	
+	% Apéndice A en página nueva, centrado y grande
+	\thispagestyle{empty} % Opcional: sin número de página
+	\vspace*{\fill}
+	\begin{center}
+		{\LARGE \textbf{Apéndice A}}
+	\end{center}
+	\vspace*{\fill}
+	\newpage
+	
+	% Insertar el PDF en la siguiente página
+	\includepdf[pages=-]{archivo.pdf}
+	
+\end{document}
