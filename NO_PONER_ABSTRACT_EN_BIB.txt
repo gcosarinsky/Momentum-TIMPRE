@@ -1,0 +1,2 @@
+estuve horas con problemas para compilar el latex, y al quitarle el abstract a todas las entradas del .bib finalmente anduvo
+Deben ser algunos putos símbolos que joden...o sabe Dios
