@@ -147,8 +147,77 @@ realizadas durante el año 2025. Aunque estos artículos están enmarcados princ
 
 
 \section{Actividades realizadas}\label{sec:actividades}
+En esta sección describiré el trabajo realizado en 2025 hasta el momento de escritura de esta memoria.
 
 \subsection{Desarrollos iniciales con el método de beamforming avanzado Null Subtraction Imaging (NSI)}\label{sec:nsi}
+Se conoce como beamforming, o conformación de imagen, al proceso mediante el cual se combinan las señales adquiridas por los distintos elementos de un arreglo para reconstruir una imagen del medio. El método más utilizado es el Delay and Sum (DAS) \cite{Perrot2021}, que consiste en aplicar un retardo a las señales recibidas por cada elemento del array, calculado según el tiempo de vuelo desde cada punto de la imagen hasta el elemento correspondiente. Posteriormente, todas las señales alineadas se suman, generando el valor final de imagen en cada punto.
+
+La amplitud de imagen en el punto \(P\), denotada como \(I(P)\), se puede expresar mediante la siguiente ecuación:
+
+\begin{equation}\label{eq:das}
+	I(P) = \sum_{n=1}^{N} w_n(P) \, s_n \left( t_0 + \tau_n(P) \right)
+\end{equation}
+
+donde \(N\) es el número de elementos del arreglo, \(s_n(t)\) es la señal recibida por el elemento \(n\) en el instante \(t\), \(w_n(P)\) es el coeficiente de apodización para el elemento \(n\) en el punto \(P\), \(t_0\) es el tiempo de referencia (por ejemplo, la emisión del pulso), y \(\tau_n(P)\) es el retardo calculado para el elemento \(n\) y el punto \(P\).
+
+Una forma de caracterizar un método de beamforming es mediante el análisis de su patrón lateral, que describe la sensibilidad del sistema a señales provenientes de diferentes direcciones (ángulo $\theta$ en la figura \ref{fig:patron_lateral}.a). Usando la aproximación de campo lejano y considerando una onda monocromática, es posible modelar el patrón lateral teórico como la transformada de Fourier de la función de apodización aplicada al array \cite{Szabo2014}. La apodización, definida por los coeficientes \(w_n(P)\), permite ajustar el ancho y la forma del lóbulo principal y disminuir los lóbulos laterales, lo que implica un compromiso entre la resolución espacial y el contraste en la imagen obtenida.
+
+En la figura \ref{fig:patron_lateral}.b se muestra un ejemplo de patrón lateral de DAS con apodización uniforme (\(w_n(P)\)=1 para todos los elementos), para un array de 64 elementos, y un pitch (distancia entre elementos) de $2\lambda$, siendo $\lambda$ la longitud de onda. Allí se muestra también el patrón lateral del método de beamforming NSI. Este método se basa en la combinación no lineal de las imágenes DAS generadas con 3 apodizaciones diferentes \cite{Agarwal2019_NSI}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.\textwidth]{panel_patron_lateral_linear.png}
+	\vspace{-18pt} % Reduce el espacio antes del caption (ajusta el valor)
+	\caption{El patrón lateral en campo lejano para beamforming DAS y NSI. (a) Esquema de un array de 8 elementos, (b) Ejemplo de patrón lateral para un array de 64 elementos.}
+	\label{fig:patron_lateral}
+\end{figure}
+
+Las tres apodizaciones utilizadas en NSI se definen como:
+
+\begin{align}
+	w_{zm}[n] &= 
+	\begin{cases}
+		1 & \text{si } n < \frac{N}{2} \\
+		-1 & \text{si } n \geq \frac{N}{2}
+	\end{cases} \\
+	w_{dc1}[n] &= w_{zm}[n] + dc \cdot w_u[n] \\
+	w_{dc2}[n] &= -w_{zm}[n] + dc \cdot w_u[n]
+\end{align}
+
+donde \( n = 0, 1, \ldots, N-1 \) y \( N \) es el número de elementos del arreglo, \(a_u[n]\) es una apodización uniforme, y \(dc\) es un valor positivo pequeño entre 0 y 1 (\(dc=0.1\)) en el ejemplo de la figura \ref{fig:patron_lateral}.b). 
+
+Cabe destacar que la apodización $w_{zm}[n]$ es de media cero, es decir, la suma de sus coeficientes es nula. Esta propiedad produce un nulo central "puntiagudo" en el patrón lateral. Este nulo es el que genera el patrón lateral que se observa en la figura \ref{fig:patron_lateral}.b), que tiene un lóbulo central más angosto que el del DAS, y por lo tanto una mejor resolución lateral. A su vez, se observa que los lóbulos laterales del patrón NSI disminuyen unos 10 dB en el ejemplo. 
+
+La imagen NSI se calcula del siguiente modo:
+
+\begin{equation}
+	I(P) = 0.5 \cdot (\left|I_{dc1}(P)\right| +  \left|I_{dc2}(P)\right|) - \left|I_{zm}(P)\right|
+\end{equation}
+
+donde $I_{dc1}(P)$ es la imagen obtenida con la apodización $a_{dc1}$, $I_{dc2}(P)$ es la imagen obtenida con la apodización $a_{dc2}$, e $I_{zm}(P)$ es la imagen obtenida con la apodización de media cero $a_{zm}$. El operador $\left| \cdot \right|$, indica el valor absoluto. Es esta operación de valor absoluto la que hace que el beamforming NSI sea no lineal.
+
+En \cite{Agarwal2019_NSI} se presenta NSI como un método que requiere conformar tres imágenes DAS, cada una utilizando una apodización distinta. Sin embargo, mi implementación del algoritmo hace uso de una simplificación para optimizar el cálculo. Para ello notemos que las las apodizaciones $a_{dc1}$ y $a_{dc2}$ son combinaciones lineales de la apodización de media cero ($a_{zm}$) y la apodización uniforme ($a_u$). Por otro lado, la sumatoria de la ecuación \ref{eq:das} puede ser separada en dos sumas  \(I_1\) e \(I_2\), una para cada mitad del array. Entonces, las 3 imágenes se puede calcular del siguiente modo:
+
+
+\begin{align}
+	I_{zm}(P) &= I_1(P) - I_2(P) \\
+	I_{dc1}(P) &= I_1(P) - I_2(P) + dc \cdot (I_1(P) + I_2(P)) \\
+	I_{dc2}(P) &= I_2(P) - I_1(P) + dc \cdot (I_1(P) + I_2(P))
+\end{align}
+
+Utilizando esta estrategia, sólo se deben conformar 2 imágenes DAS de \(N/2\) elementos con apodización uniforme, lo cual tiene un costo computacional similar al cálculo de una imagen DAS con el array completo. De este modo se puede aumentar considerablemente la tasa de imágenes.
+
+\subsubsection{Power doppler con NSI}
+
+%En imagen biomédica, la modalidad de imagen ultrarrápida más utilizada es la plane wave imaging (PWI) \cite{Montaldo2009}, en la que el transductor emite ondas planas en lugar de haces enfocados convencionalmente. En este modo, se transmiten pulsos de ultrasonido como frentes de onda plana a diferentes ángulos, permitiendo adquirir toda la región de interés con una única transmisión por ángulo. Posteriormente, mediante beamforming, las señales recibidas se combinan en forma coherente para reconstruir la imagen. Esta técnica ofrece velocidades de adquisición significativamente superiores a las de la formación de haces tradicional, lo que la hace especialmente adecuada para aplicaciones que requieren alta resolución temporal, como la elastografía o el estudio del flujo sanguíneo. En esta modalidad la imagen se calcula usando:
+%
+%\begin{equation}
+%	I(P) = \sum_{k=1}^{K} \sum_{n=1}^{N} w_{n}(P) \, s_{n,k}\left( t_0 + \tau_{n,k}(P) \right)
+%\end{equation}
+%
+%donde $K$ es el número de ángulos de transmisión, $s_{n,k}(t)$ es la señal recibida por el elemento $n$ para la transmisión $k$ en el instante $t$, $t_0$ es el tiempo de referencia y $\tau_{n,k}(P)$ es el retardo correspondiente para cada combinación de elemento y transmisión.
+
+
 \subsubsection{Patrón lateral en campo lejano 3D}
 
 \subsection{Publicaciones en revistas JCR}\label{sec:publicaciones}
@@ -163,6 +232,8 @@ ius?
 \subsection{Cursos}
 
 \section{Conclusiones y trabajo futuro}\label{sec:conclusiones}
+
+\printbibliography
 
 \newpage
 \appendix

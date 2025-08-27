@@ -3,8 +3,8 @@
 \contentsline {subsection}{\numberline {1.1}Estado del arte}{3}{subsection.1.1}%
 \contentsline {section}{\numberline {2}Actividades realizadas}{6}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Desarrollos iniciales con el método de beamforming avanzado Null Subtraction Imaging (NSI)}{6}{subsection.2.1}%
-\contentsline {subsubsection}{\numberline {2.1.1}Patrón lateral en campo lejano 3D}{6}{subsubsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.2}Publicaciones en revistas JCR}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Congresos internacionales}{6}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Cursos}{6}{subsection.2.4}%
-\contentsline {section}{\numberline {3}Conclusiones y trabajo futuro}{6}{section.3}%
+\contentsline {subsubsection}{\numberline {2.1.1}Patrón lateral en campo lejano 3D}{9}{subsubsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.2}Publicaciones en revistas JCR}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Congresos internacionales}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Cursos}{9}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Conclusiones y trabajo futuro}{9}{section.3}%
