@@ -28,6 +28,7 @@
 \usepackage{pdfpages} % Para insertar PDFs
 \usepackage{tabularx}
 \usepackage{csquotes}
+\usepackage{titling}
 
 \addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 
@@ -64,8 +65,24 @@
 % Set the space after paragraphs
 \setlength{\parskip}{1em} % Adjust the length as needed
 
+%\pretitle{\begin{center}\Large\bfseries}
+%	\posttitle{\end{center}}
+%\preauthor{}
+%\postauthor{}
+%\predate{}
+%\postdate{}
+%
+%\title{Momentum CSIC\\
+%	 \small Tecnología de imagen multi-modal para investigación pre-clínica (TIMPRE)\\
+%	 \large Memoria anual 2025}
+%	 \author{\centering Guillermo G. Cosarinsky Markman}
+%\date{}
 
-\title{Momentum \\ Tecnología de imagen multi-modal para investigación pre-clínica (TIMPRE) \\ Memoria anual 2025}
+\title{
+	\textbf{Momentum CSIC} \\
+	Tecnología de imagen multi-modal para investigación pre-clínica (TIMPRE) \\
+	Memoria anual 2025
+}
 \author{Guillermo G. Cosarinsky Markman}
 \date{}
 
@@ -86,7 +103,7 @@ La investigación preclínica constituye un pilar esencial en el desarrollo de n
 
 La integración de ultrasonido con otras modalidades de imagen —como PET, resonancia magnética (MRI) y fotoacústica— permite obtener información complementaria sobre morfología, función y metabolismo en los modelos animales \cite{Wu2018, Rovera2025}. La fusión de estas técnicas incrementa la sensibilidad y especificidad de los estudios, abriendo nuevas posibilidades para el seguimiento de procesos biológicos complejos, la caracterización de patologías y la evaluación de terapias innovadoras. Este enfoque multimodal resulta clave para avanzar en la investigación preclínica y favorecer la futura transferencia de tecnologías al ámbito clínico.
 
-Esta memoria se organiza de la siguiente manera: en la sección \ref{sec:estado_arte} se presenta una reseña del estado del arte en tecnologías de imagen para investigación preclínica, poniendo especial énfasis en las técnicas de ultrasonido. La sección \ref{sec:nsi} describe la implementación del método de imagen ultrasónica Null Subtraction Imaging (NSI) \cite{Agarwal2019_NSI}, su aplicación a un conjunto de datos de imagen funcional cerebral de rata proporcionado por Neuro-Electronics Research Flanders (NERF), así como el trabajo preliminar orientado a extender el método a arrays matriciales. En la sección \ref{sec:actividades} se sintetizan los artículos publicados durante 2025, enfocados en el desarrollo de métodos para la obtención de \highlight{imágenes en sistemas con interfaces refractantes}. Finalmente, la sección \ref{sec:conclusiones} expone las principales conclusiones y las perspectivas de trabajo futuro.
+Esta memoria se organiza de la siguiente manera: en la sección \ref{sec:estado_arte} se presenta una reseña del estado del arte en tecnologías de imagen para investigación preclínica, poniendo especial énfasis en las técnicas de ultrasonido. La sección \ref{sec:nsi} describe la implementación del método de imagen ultrasónica Null Subtraction Imaging (NSI) \cite{Agarwal2019_NSI}, su aplicación a un conjunto de datos de imagen funcional cerebral de rata proporcionado por Neuro-Electronics Research Flanders (NERF) \footnote{NERF es un instituto de investigación interdisciplinario en Bélgica dedicado al estudio de la neurociencia y el desarrollo de tecnologías avanzadas para la investigación cerebral (https://nerf.be/).}, así como el trabajo preliminar orientado a extender el método a arrays matriciales. En la sección \ref{sec:actividades} se sintetizan los artículos publicados durante 2025, enfocados en el desarrollo de métodos para la obtención de \highlight{imágenes en sistemas con interfaces refractantes}. Finalmente, la sección \ref{sec:conclusiones} expone las principales conclusiones y las perspectivas de trabajo futuro.
 
 
 \subsection{Estado del arte}\label{sec:estado_arte}
@@ -172,7 +189,7 @@ En la figura \ref{fig:patron_lateral}.b se muestra un ejemplo de patrón lateral
 	\label{fig:patron_lateral}
 \end{figure}
 
-Las tres apodizaciones utilizadas en NSI se definen como:
+Las tres apodizaciones utilizadas en NSI se definen del siguiente modo:
 
 \begin{align}
 	w_{zm}[n] &= 
@@ -207,8 +224,6 @@ En \cite{Agarwal2019_NSI} se presenta NSI como un método que requiere conformar
 
 Utilizando esta estrategia, sólo se deben conformar 2 imágenes DAS de \(N/2\) elementos con apodización uniforme, lo cual tiene un costo computacional similar al cálculo de una imagen DAS con el array completo. De este modo se puede aumentar considerablemente la tasa de imágenes.
 
-\subsubsection{Power doppler con NSI}
-
 %En imagen biomédica, la modalidad de imagen ultrarrápida más utilizada es la plane wave imaging (PWI) \cite{Montaldo2009}, en la que el transductor emite ondas planas en lugar de haces enfocados convencionalmente. En este modo, se transmiten pulsos de ultrasonido como frentes de onda plana a diferentes ángulos, permitiendo adquirir toda la región de interés con una única transmisión por ángulo. Posteriormente, mediante beamforming, las señales recibidas se combinan en forma coherente para reconstruir la imagen. Esta técnica ofrece velocidades de adquisición significativamente superiores a las de la formación de haces tradicional, lo que la hace especialmente adecuada para aplicaciones que requieren alta resolución temporal, como la elastografía o el estudio del flujo sanguíneo. En esta modalidad la imagen se calcula usando:
 %
 %\begin{equation}
@@ -218,9 +233,53 @@ Utilizando esta estrategia, sólo se deben conformar 2 imágenes DAS de \(N/2\) 
 %donde $K$ es el número de ángulos de transmisión, $s_{n,k}(t)$ es la señal recibida por el elemento $n$ para la transmisión $k$ en el instante $t$, $t_0$ es el tiempo de referencia y $\tau_{n,k}(P)$ es el retardo correspondiente para cada combinación de elemento y transmisión.
 
 
-\subsubsection{Patrón lateral en campo lejano 3D}
+\subsubsection{Power doppler con NSI}
+En la sección \ref{sec:estado_arte} he mencionado que recientemente se han realizado numerosas investigaciones sobre imagen neuronal cerebral mediante ultrasonidos \cite{Montaldo2022_fus, Brunner2023, Strumane2025, Brunner2021}. La imagen funcional cerebral se basa principalmente en el modo Power Doppler \cite{Szabo2014}, que permite detectar cambios en la perfusión sanguínea asociados a la actividad neuronal.
 
-\subsection{Publicaciones en revistas JCR}\label{sec:publicaciones}
+En \cite{Kou2024}, el método NSI ha sido aplicado a la imagen funcional de cerebro de rata, logrando una mejora significativa en la resolución lateral respecto a DAS. En esta sección se ha aplicado el método NSI a un conjunto de datos provenientes de un experimento con una rata, proporcionado por el investigador Gabriel Montaldo del Neuro-Electronics Research Flanders (NERF). En el experimento se utilizó un array lineal de 128 elementos con un pitch de 0.09 mm. La frecuencia de excitación fue de 15 MHz. El protocolo utilizado en el experimento se describe en \cite{Brunner2021}
+
+Los resutlados obtenidos se muestran en la figura \ref{fig:nsi_pd}, en la cual se compara la imagen DAS (figura \ref{fig:nsi_pd}.a) con NSI (figura \ref{fig:nsi_pd}.b). Se puede observar que el método NSI aumenta la resolución lateral. Para apreciar este efecto con más detalle en la figura \ref{fig:nsi_pd_perfiles} se presentan perfiles de amplitud a lo largo de las 2 líneas marcadas en la figura \ref{fig:nsi_pd}.a en color magenta. Estas líneas cruzan vasos sanguíneos. El ancho de estos vasos en la imagen está determiado por la resolución del método de beamforming utilizado. La línea 1 (figuras \ref{fig:nsi_pd_perfiles}.a y \ref{fig:nsi_pd_perfiles}.c) atraviesa 4 vasos muy pequeños en la zona de la corteza cerebral, y la línea 2 (figuras \ref{fig:nsi_pd_perfiles}.b y \ref{fig:nsi_pd_perfiles}.d) atraviesa un vaso en una zona más profunda. En ambos casos se puede observar como los picos son más angostos en NSI que en DAS. A su vez, se observan una mejora en el contraste, principalmente en la zona marcada con un círculo en la figura \ref{fig:nsi_pd_perfiles}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.\textwidth]{power_doppler_nsi_anotated.png}
+	\vspace{-30pt} % Reduce el espacio antes del caption (ajusta el valor)
+	\caption{Imágenes Power Doppler. (a) DAS con apodización uniforme, (b) NSI, con dc=0.1)}
+	\label{fig:nsi_pd}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.\textwidth]{power_doppler_rata_perfiles_anotated.png}
+	%\vspace{-18pt} % Reduce el espacio antes del caption (ajusta el valor)
+	\caption{Perfil de amplitud de imagen a través de vasos sanguíneos. Estos perfiles están evaluados sobre las líneas trazadas en la figura \ref{fig:nsi_pd}.a en color magenta. (a) Linea 1, (b) Linea 2}
+	\label{fig:nsi_pd_perfiles}
+\end{figure}
+
+\subsubsection{NSI con array matricial}
+El uso de arrays matriciales permite obtener imágenes 3D (volumétricas) de manera eficiente, mientras que con arrays lineales este proceso resulta mucho más limitado y requiere la translación física del array mediante un mecanismo externo para poder reconstruir el volumen. Por lo tanto, es de interés generalizar el método NSI a arrays matriciales. En \cite{Yociss2021} esto se ha implementado mediante el uso de 6 apodizaciones diferentes, dividiendo al array en 2 mitades a lo largo de las 2 direcciones principales (figuras \ref{fig:apod_matrix}.a y \ref{fig:apod_matrix}.b). Por otro lado, la figura \ref{fig:apod_matrix}.c muestra una apodización propuesta por mi, que permite hacer uso de la misma estrategia explicada en la sección previa \ref{sec:nsi}. La figura \ref{fig:lateral_pat_matrix}.b muestra el patrón lateral de campo lejano que se obtiene haciendo NSI con esta última apodización, comparado con el correspondiente a DAS con apodización uniforme en la figura \ref{fig:lateral_pat_matrix}.a. El cálculo se ha realizado para un array de 32x32 elementos con un pitch de \(2\lambda\). Se aprecia claramente la reducción en la extensión del lóbulo principal, y una caída de amplitud en los lóbulos laterales.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.\textwidth]{apod_matrix_anotated.png}
+	\vspace{-18pt} % Reduce el espacio antes del caption (ajusta el valor)
+	\caption{Apodizaciones para método NSI con un array matricial. (a) y (b) Apodizaciones utilizadas en \cite{Yociss2021}, (c) Apodización propuesta en esta memoria}
+	\label{fig:apod_matrix}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.1\textwidth]{panel_patron_lateral_matrix.png}
+	\vspace{-18pt} % Reduce el espacio antes del caption (ajusta el valor)
+	\caption{Patron lateral en campo lejano para un array matricial de 32x32. (a) DAS con apodización uniforme, (b) NSI con la apodización propuesta (figura \ref{fig:apod_matrix}.c)}
+	\label{fig:lateral_pat_matrix}
+\end{figure}
+
+En los próximos meses se implementará el beamforming NSI utilizando la apodización propuesta, el cual será probado inicialmente con datos obtenidos de simulaciones. Posteriormente, se consultará con Gabriel Montaldo sobre la posibilidad de acceder a un conjunto de datos experimentales obtenidos mediante el uso de un array matricial en estudios con ratas.
+
+\FloatBarrier % para que el texto de aquí en adelante aparezca después de las figuras
+
+\subsection{Publicaciones en revistas indexadas}\label{sec:publicaciones}
 surface AIM
 deep echo
 oscar sparse? lo dejo para el año proximo 
