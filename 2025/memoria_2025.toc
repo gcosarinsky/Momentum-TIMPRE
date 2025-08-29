@@ -5,7 +5,7 @@
 \contentsline {subsection}{\numberline {2.1}Desarrollos iniciales con el método de beamforming avanzado Null Subtraction Imaging (NSI)}{6}{subsection.2.1}%
 \contentsline {subsubsection}{\numberline {2.1.1}Power doppler con NSI}{9}{subsubsection.2.1.1}%
 \contentsline {subsubsection}{\numberline {2.1.2}NSI con array matricial}{9}{subsubsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.2}Publicaciones en revistas JCR}{13}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Congresos internacionales}{13}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Cursos}{13}{subsection.2.4}%
-\contentsline {section}{\numberline {3}Conclusiones y trabajo futuro}{13}{section.3}%
+\contentsline {subsection}{\numberline {2.2}Publicaciones en revistas indexadas}{13}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Congresos internacionales}{14}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Cursos}{15}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Conclusiones y trabajo futuro}{15}{section.3}%

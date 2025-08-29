@@ -280,15 +280,64 @@ En los próximos meses se implementará el beamforming NSI utilizando la apodiza
 \FloatBarrier % para que el texto de aquí en adelante aparezca después de las figuras
 
 \subsection{Publicaciones en revistas indexadas}\label{sec:publicaciones}
-surface AIM
-deep echo
-oscar sparse? lo dejo para el año proximo 
+
+Durante 2025 he realizado las siguientes publicaciones en revistas indexadas:
+
+\begin{itemize}
+	\item \fullcite{Cosarinsky2025}
+	\item \fullcite{Munoz2025}
+\end{itemize}
+
+Ambos trabajos se encuentran disponibles en los Apéndices A y B de esta memoria.
+
+La primera publicación \cite{Cosarinsky2025} presenta el método AIM (Aperture Interpolation Method) para la reconstrucción de superficies utilizando arrays ultrasónicos bidimensionales (por ejemplo, arrays matriciales). Este trabajo presenta un método para la reconstrucción de una superficie a través de los tiempos de vuelos de los ecos generados por esa superficie. Esta reconstrucción es necesario para poder hacer beamforming cuando hay dos o más medios de propagación. La validación experimental se realizó sobre piezas de aluminio con geometría compleja, comparando los resultados ultrasónicos con datos de escaneo láser y micro-CT (tomografía de rayos X). La capacidad de AIM para obtener mapas de superficie precisos es fundamental para la generación de imágenes adaptativas y tiene aplicaciones directas tanto en ensayos no destructivos como en imagen biomédica, especialmente en escenarios de imagen transcraneal donde la refracción en superficies genera aberraciones de fase \cite{Mozaf2022, Waasdorp2025}.
+
+La segunda publicación \cite{Munoz2025} introduce el modelo DeepEcho3D, una red neuronal convolucional tridimensional diseñada para la detección robusta de ecos superficiales en señales de ultrasonido. El trabajo aborda la problemática de la sensibilidad al ruido y a señales espurias en los métodos convencionales, proponiendo una solución basada en Deep Learning que mejora significativamente la precisión en la estimación del tiempo de vuelo. Esta estimación es necesaria para la aplicación del método AIM u otros métodos de estimación de la geometría del medio de propagación.El modelo DeepEcho3D fue desarrollado tras adquirir experiencia previa en el diseño y entrenamiento de redes neuronales aplicadas a la ecografía pulmonar \cite{Munoz2024}. Este recorrido evidencia cómo las aplicaciones de imagen ultrasónica en Ensayos No Destructivos (END) y en el ámbito biomédico se enriquecen mutuamente, ya que los avances metodológicos en un campo pueden transferirse y potenciar el desarrollo de soluciones innovadoras en el otro.
+
+Ambos trabajos presentan avances relevantes para el desarrollo de técnicas de imagen adaptativa, con especial enfoque en la reconstrucción y corrección de geometrías superficiales, aspecto clave para la mejora de la resolución y el contraste en imagen transcraneal y en entornos donde la refracción en superficies complejas limita el desempeño de los métodos tradicionales.
+
+Las versiones completas de estos trabajos pueden consultarse en los Apéndices \textbf{A} y \textbf{B}.
 
 \subsection{Congresos internacionales}\label{sec:congresos}
-forum
-ius?
+
+Durante el año 2025 se presentaron los siguientes trabajos en el \textbf{Forum Acusticum Euronoise 2025}, celebrado en Málaga, España, del 23 al 26 de junio de 2025:
+
+\begin{itemize}
+	\item \textbf{Adaptive 3D Planewave Imaging Through Interfaces} \\
+	Guillermo Cosarinsky, Adrián Rubio, Mario Muñoz, Jorge F. Cruza, Jorge Camacho
+	
+	\item \textbf{Sparse Arrays for 3D Ultrasound Microstructure Imaging} \\
+	Oscar Martinez-Graullera, Jorge Camacho, Guillermo Cosarinsky, Jorge Huecas, Luis Elvira, Alberto Ibañez
+	
+	\item \textbf{Cross-Domain Transfer Learning for Segmentation of Lung Ultrasound Images} \\
+	Mario Muñoz, Adrián Rubio, Guillermo Cosarinsky, Jorge Camacho
+	
+	\item \textbf{Hardware Acceleration of Convolutional Neural Network for Lung Ultrasound Segmentation} \\
+	Adrián Rubio, Mario Muñoz, Guillermo Cosarinsky, Jorge F. Cruza
+	
+	\item \textbf{Deep Learning for Ultrasound Surface Echo Detection with Matrix Arrays} \\
+	Marcelo Larrea, Mario Muñoz, Adrián Rubio, Jorge F. Cruza, Guillermo Cosarinsky
+\end{itemize}
+
+Por otro lado, se presentarán en \textbf{The 2025 IEEE International Ultrasonics Symposium (IEEE IUS 2025)}, que será la 62° edición de este congreso y tendrá lugar en Utrecht, Países Bajos, del 15 al 18 de septiembre de 2025, el siguiente trabajo:
+
+\begin{itemize}
+	\item \textbf{Matrix Probe Offset Calibration For Robotic Arm Scanning} \\
+	Guillermo Cosarinsky, Jorge F. Cruza, Mario Muñoz, Adrián Rubio, Jorge Camacho
+\end{itemize}
+
+Estos trabajos abarcan temas como reconstrucción de superficies y corrección adaptativa en imagen ultrasónica, aplicaciones de inteligencia artificial en el procesamiento de imágenes de ultrasonido, segmentación y detección de ecos superficiales, y el desarrollo de hardware especializado para acelerar redes neuronales en aplicaciones biomédicas. 
 
 \subsection{Cursos}
+
+Este año 2025 comencé a cursar el máster \textbf{Máster de Formación Permanente en Inteligencia Artificial Aplicada} de la Universidad Europea. He realizado hasta el momento los siguiente cursos:
+
+\begin{itemize}
+	\item Módulo 1: Inteligencia y razonamiento
+	\item Módulo 2: Programación y entornos de trabajo en ia
+	\item Módulo 3: Sistemas inteligentes (minería de datos, análisis y visualización)
+\end{itemize}
+
 
 \section{Conclusiones y trabajo futuro}\label{sec:conclusiones}
 
