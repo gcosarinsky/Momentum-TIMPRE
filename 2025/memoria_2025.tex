@@ -92,6 +92,8 @@
 \begin{document}	
 \maketitle
 
+\newpage
+
 \tableofcontents
 
 \section{Introducción}\label{sec:intro}
@@ -341,21 +343,53 @@ Este año 2025 comencé a cursar el máster \textbf{Máster de Formación Perman
 
 \section{Conclusiones y trabajo futuro}\label{sec:conclusiones}
 
+A lo largo de este año se han realizado avances en el desarrollo de métodos para mejorar la calidad de imagen por ultrasonido en investigación preclínica, especialmente en situaciones donde la presencia de interfaces refractantes dificulta el proceso de beamforming. La implementación y validación de nuevas técnicas, como AIM y DeepEcho3D, ha permitido abordar problemas relacionados con la geometría superficial y la detección de ecos en señales complejas.
+
+Los resultados obtenidos muestran que la combinación de métodos de reconstrucción adaptativa y técnicas de inteligencia artificial contribuye a mejorar la resolución y el contraste de las imágenes, y que existe un alto grado de transferencia entre aplicaciones industriales y biomédicas.
+
+Como trabajo futuro, el objetivo principal será avanzar en la implementación del método NSI en tres dimensiones, empleando arrays matriciales y la estrategia de apodización propuesta en la sección \ref{sec:nsi}. Este desarrollo se llevará a cabo en colaboración con Gabriel Montaldo (NERF), con el propósito de aplicar y validar el método en estudios de imagen funcional cerebral. Por otro lado, se estudiará la aplicación del método NSI en imagen fotoacústica.
+
+
 \printbibliography
 
-\newpage
 \appendix
 
-% Apéndice A en página nueva, centrado y grande
-%\thispagestyle{empty} % Opcional: sin número de página
-\vspace*{\fill}
-\begin{center}
-	{\LARGE \textbf{Apéndice A}}
-\end{center}
-\vspace*{\fill}
-\newpage
+\section{Apéndice A}
 
-% Insertar el PDF en la siguiente página
+\includepdf[pages=-]{paper_AIM.pdf}
+
+\section{Apéndice B}
+
+\includepdf[pages=-]{deep_echo_3D.pdf}
+
+%
+%\newpage
+%\appendix
+%
+%\vspace*{\fill}
+%\begin{center}
+%	{\LARGE \textbf{Apéndice A}}
+%\end{center}
+%\vspace*{\fill}
+%
+%% Agregar al índice
+%\addcontentsline{toc}{section}{Apéndice A}
+%
+%\newpage
 %\includepdf[pages=-]{paper_AIM.pdf}
+%
+%\newpage
+%
+%\vspace*{\fill}
+%\begin{center}
+%	{\LARGE \textbf{Apéndice B}}
+%\end{center}
+%\vspace*{\fill}
+%
+%\addcontentsline{toc}{section}{Apéndice B}
+%
+%\newpage
+%\includepdf[pages=-]{deep_echo_3D.pdf}
+
 
 \end{document}
