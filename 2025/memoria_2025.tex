@@ -91,13 +91,18 @@
 
 \begin{document}	
 \maketitle
+\thispagestyle{empty}
+\vspace{5cm}
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{logos_todos.png}
+\end{center}
 
 \newpage
 
 \tableofcontents
 
 \section{Introducción}\label{sec:intro}
-La presente memoria resume el trabajo realizado durante 2025 en el marco del proyecto TIMPRE, financiado por la convocatoria Momentum CSIC. El objetivo principal del proyecto es mi formación posdoctoral orientada al desarrollo de competencias digitales, a través de la participación activa en el diseño y avance de tecnología multimodal de imagen para investigación preclínica, en colaboración con los grupos participantes. Este entorno multidisciplinar, que integra experiencia en imagen médica entre los grupos de ITEFI y grupos externos, permite potenciar sinergias y aprovechar las oportunidades emergentes en el campo de la investigación biomédica.
+La presente memoria resume el trabajo realizado durante 2025 en el marco del proyecto TIMPRE, financiado por la convocatoria Momentum CSIC. El objetivo principal del proyecto es mi formación posdoctoral orientada al desarrollo de competencias digitales, a través de la participación activa en el diseño y avance de tecnología multimodal de imagen para investigación preclínica, en colaboración con los grupos participantes. Este entorno multidisciplinar, que integra experiencia en imagen médica entre los grupos de ITEFI y grupos externos, permite potenciar sinergias y aprovechar las oportunidades emergentes en el campo de la investigación biomédica. Entre los grupos externos con los cuales se preveen colaboraciones se encuentran el grupo de Joaquin Lopez Herraiz (Universidad Complutense de Madrid (UCM)) y el de Gabriel Montaldo (Neuro-Electronics Research Flanders (NERF) \footnote{NERF es un instituto de investigación interdisciplinario en Bélgica dedicado al estudio de la neurociencia y el desarrollo de tecnologías avanzadas para la investigación cerebral (https://nerf.be/).})
 
 El grupo en el que trabajo se especializa en tecnologías de ultrasonido, y es en imagen ultrasónica donde se centra mi contribución principal. Otros investigadores con los que colaboramos aportan experiencia en técnicas complementarias como la tomografía por emisión de positrones (PET) y la imagen fotoacústica.
 
@@ -105,7 +110,7 @@ La investigación preclínica constituye un pilar esencial en el desarrollo de n
 
 La integración de ultrasonido con otras modalidades de imagen —como PET, resonancia magnética (MRI) y fotoacústica— permite obtener información complementaria sobre morfología, función y metabolismo en los modelos animales \cite{Wu2018, Rovera2025}. La fusión de estas técnicas incrementa la sensibilidad y especificidad de los estudios, abriendo nuevas posibilidades para el seguimiento de procesos biológicos complejos, la caracterización de patologías y la evaluación de terapias innovadoras. Este enfoque multimodal resulta clave para avanzar en la investigación preclínica y favorecer la futura transferencia de tecnologías al ámbito clínico.
 
-Esta memoria se organiza de la siguiente manera: en la sección \ref{sec:estado_arte} se presenta una reseña del estado del arte en tecnologías de imagen para investigación preclínica, poniendo especial énfasis en las técnicas de ultrasonido. La sección \ref{sec:nsi} describe la implementación del método de imagen ultrasónica Null Subtraction Imaging (NSI) \cite{Agarwal2019_NSI}, su aplicación a un conjunto de datos de imagen funcional cerebral de rata proporcionado por Neuro-Electronics Research Flanders (NERF) \footnote{NERF es un instituto de investigación interdisciplinario en Bélgica dedicado al estudio de la neurociencia y el desarrollo de tecnologías avanzadas para la investigación cerebral (https://nerf.be/).}, así como el trabajo preliminar orientado a extender el método a arrays matriciales. En la sección \ref{sec:actividades} se sintetizan los artículos publicados durante 2025, enfocados en el desarrollo de métodos para la obtención de \highlight{imágenes en sistemas con interfaces refractantes}. Finalmente, la sección \ref{sec:conclusiones} expone las principales conclusiones y las perspectivas de trabajo futuro.
+Esta memoria se organiza de la siguiente manera: en la sección \ref{sec:estado_arte} se presenta una reseña del estado del arte en tecnologías de imagen para investigación preclínica, poniendo especial énfasis en las técnicas de ultrasonido. La sección \ref{sec:nsi} describe la implementación del método de imagen ultrasónica Null Subtraction Imaging (NSI) \cite{Agarwal2019_NSI}, su aplicación a un conjunto de datos de imagen funcional cerebral de rata proporcionado por NERF, así como el trabajo preliminar orientado a extender el método a arrays matriciales. En la sección \ref{sec:actividades} se sintetizan los artículos publicados durante 2025, enfocados en el desarrollo de métodos para la obtención de imágenes en sistemas con interfaces refractantes. Finalmente, la sección \ref{sec:conclusiones} expone las principales conclusiones y las perspectivas de trabajo futuro.
 
 
 \subsection{Estado del arte}\label{sec:estado_arte}
@@ -145,11 +150,11 @@ Un aspecto clave en el avance de la imagen biomédica preclínica es el desarrol
 
 Dentro de las SRUS, la Microscopía de Localización por Ultrasonido (ULM) es una técnica precursora y la más común. Se inspira en la microscopía óptica de localización y se basa en la localización precisa de microburbujas individuales inyectadas como agentes de contraste \cite{Couture2018}. Al acumular estas localizaciones a lo largo de un gran número de fotogramas, la ULM puede reconstruir imágenes compuestas de súper-resolución. Esta técnica ha permitido visualizar vasos con diámetros de hasta 8--30~$\mu$m en diversas aplicaciones, incluyendo el cerebro de ratas, riñones, tumores y en cánceres y cerebro humanos. 
 
-En este panorama, la Imagen de Súper-Resolución basada en Eritrocitos (SURE) \cite{Jensen2024_SURE} representa una nueva e innovadora aproximación dentro de las SRUS. A diferencia de la ULM, la SURE utiliza los eritrocitos (glóbulos rojos) circulantes como blancos de imagen, eliminando la necesidad de agentes de contraste externos. 
+En este panorama, la imagen de Súper-Resolución basada en Eritrocitos (SURE) \cite{Jensen2024_SURE} representa una nueva e innovadora aproximación dentro de las SRUS. A diferencia de la ULM, la SURE utiliza los eritrocitos (glóbulos rojos) circulantes como blancos de imagen, eliminando la necesidad de agentes de contraste externos.
 
 Paralelamente, métodos como el ultrasonido funcional (fUS) permiten monitorizar en tiempo real cambios en el volumen sanguíneo cerebral como medida indirecta de la actividad neuronal, facilitando estudios de neuroimagen funcional en modelos animales, incluso en condiciones fisiopatológicas como el accidente cerebrovascular \cite{Montaldo2022_fus, Brunner2023}. La fUS se basa en los principios del Doppler de onda pulsada para detectar el movimiento de la sangre, proporcionando una alta resolución espacio-temporal (100~$\mu$m, 100~ms) y un amplio campo de visión. La capacidad de las SRUS, incluyendo SURE, para visualizar la arquitectura de la microvasculatura con una resolución muy superior a la del ultrasonido convencional, posibilita la detección de vasos de pequeño calibre y el análisis detallado de redes vasculares en órganos como el riñón, complementando y potencialmente mejorando la comprensión de los mecanismos hemodinámicos subyacentes a la actividad neuronal que fUS observa. Un ejemplo de integración de fUS y ULM se presenta en \cite{Jones2024} donde la utilización de agentes de contraste, que aumentan la relación señal ruido (SNR), permitieron obtener imagen funcional cerebral a través del cráneo. Un ejemplo de integración entre fUS y ULM se muestra en \cite{Jones2024}, donde el empleo de agentes de contraste, que mejoran la relación señal-ruido (SNR), permitió obtener imágenes funcionales del cerebro a través del cráneo. Este procedimiento representa un desafío, principalmente por la atenuación y la aberración de fase que genera el hueso craneal.
 
-Un aspecto clave en el avance de la imagen biomédica preclínica es el desarrollo de técnicas capaces de evaluar la función y la microvasculatura tisular. Métodos como el ultrasonido funcional (fUS) permiten monitorizar en tiempo real cambios en el volumen sanguíneo cerebral como medida indirecta de la actividad neuronal, facilitando estudios de neuroimagen funcional en modelos animales, incluso en condiciones fisiopatológicas como el accidente cerebrovascular \cite{Montaldo2022_fus, Brunner2023}. Por otro lado, las técnicas avanzadas de ultrasonido como la imagen de super-resolución basada en eritrocitos (SURE) \cite{Jensen2024_SURE}, permiten visualizar la arquitectura de la microvasculatura con una resolución muy superior a la del ultrasonido convencional y sin necesidad de agentes de contraste, posibilitando la detección de vasos de pequeño calibre y el análisis detallado de redes vasculares en órganos como el riñón. 
+%Un aspecto clave en el avance de la imagen biomédica preclínica es el desarrollo de técnicas capaces de evaluar la función y la microvasculatura tisular. Métodos como el ultrasonido funcional (fUS) permiten monitorizar en tiempo real cambios en el volumen sanguíneo cerebral como medida indirecta de la actividad neuronal, facilitando estudios de neuroimagen funcional en modelos animales, incluso en condiciones fisiopatológicas como el accidente cerebrovascular \cite{Montaldo2022_fus, Brunner2023}. Por otro lado, las técnicas avanzadas de ultrasonido como la imagen de super-resolución basada en eritrocitos (SURE) \cite{Jensen2024_SURE}, permiten visualizar la arquitectura de la microvasculatura con una resolución muy superior a la del ultrasonido convencional y sin necesidad de agentes de contraste, posibilitando la detección de vasos de pequeño calibre y el análisis detallado de redes vasculares en órganos como el riñón.
 
 En los últimos años, la imagen transcraneal mediante ultrasonido ha experimentado avances significativos, gracias al desarrollo de técnicas específicas para superar las aberraciones inducidas por el hueso craneal. Por ejemplo, en  
 \cite{Mozaf2022}
@@ -224,7 +229,7 @@ En \cite{Agarwal2019_NSI} se presenta NSI como un método que requiere conformar
 	I_{dc2}(P) &= I_2(P) - I_1(P) + dc \cdot (I_1(P) + I_2(P))
 \end{align}
 
-Utilizando esta estrategia, sólo se deben conformar 2 imágenes DAS de \(N/2\) elementos con apodización uniforme, lo cual tiene un costo computacional similar al cálculo de una imagen DAS con el array completo. De este modo se puede aumentar considerablemente la tasa de imágenes.
+Utilizando esta estrategia, sólo se deben conformar 2 imágenes DAS de \(N/2\) elementos con apodización uniforme, lo cual tiene un costo computacional similar al cálculo de una imagen DAS con el array completo. De este modo se puede aumentar considerablemente la tasa de imágenes con respecto a la implementación original propuesta por los autores.
 
 %En imagen biomédica, la modalidad de imagen ultrarrápida más utilizada es la plane wave imaging (PWI) \cite{Montaldo2009}, en la que el transductor emite ondas planas en lugar de haces enfocados convencionalmente. En este modo, se transmiten pulsos de ultrasonido como frentes de onda plana a diferentes ángulos, permitiendo adquirir toda la región de interés con una única transmisión por ángulo. Posteriormente, mediante beamforming, las señales recibidas se combinan en forma coherente para reconstruir la imagen. Esta técnica ofrece velocidades de adquisición significativamente superiores a las de la formación de haces tradicional, lo que la hace especialmente adecuada para aplicaciones que requieren alta resolución temporal, como la elastografía o el estudio del flujo sanguíneo. En esta modalidad la imagen se calcula usando:
 %
@@ -259,7 +264,7 @@ Los resutlados obtenidos se muestran en la figura \ref{fig:nsi_pd}, en la cual s
 \end{figure}
 
 \subsubsection{NSI con array matricial}
-El uso de arrays matriciales permite obtener imágenes 3D (volumétricas) de manera eficiente, mientras que con arrays lineales este proceso resulta mucho más limitado y requiere la translación física del array mediante un mecanismo externo para poder reconstruir el volumen. Por lo tanto, es de interés generalizar el método NSI a arrays matriciales. En \cite{Yociss2021} esto se ha implementado mediante el uso de 6 apodizaciones diferentes, dividiendo al array en 2 mitades a lo largo de las 2 direcciones principales (figuras \ref{fig:apod_matrix}.a y \ref{fig:apod_matrix}.b). Por otro lado, la figura \ref{fig:apod_matrix}.c muestra una apodización propuesta por mi, que permite hacer uso de la misma estrategia explicada en la sección previa \ref{sec:nsi}. La figura \ref{fig:lateral_pat_matrix}.b muestra el patrón lateral de campo lejano que se obtiene haciendo NSI con esta última apodización, comparado con el correspondiente a DAS con apodización uniforme en la figura \ref{fig:lateral_pat_matrix}.a. El cálculo se ha realizado para un array de 32x32 elementos con un pitch de \(2\lambda\). Se aprecia claramente la reducción en la extensión del lóbulo principal, y una caída de amplitud en los lóbulos laterales.
+El uso de arrays matriciales permite obtener imágenes 3D (volumétricas) de manera eficiente, mientras que con arrays lineales este proceso resulta mucho más limitado y requiere la traslación física del array mediante un mecanismo externo para poder reconstruir el volumen. Por lo tanto, es de interés generalizar el método NSI a arrays matriciales. En \cite{Yociss2021} esto se ha implementado mediante el uso de 6 apodizaciones diferentes, dividiendo al array en 2 mitades a lo largo de las 2 direcciones principales (figuras \ref{fig:apod_matrix}.a y \ref{fig:apod_matrix}.b). Por otro lado, la figura \ref{fig:apod_matrix}.c muestra una apodización propuesta por mi, que permite hacer uso de la misma estrategia explicada en la sección previa \ref{sec:nsi}. La figura \ref{fig:lateral_pat_matrix}.b muestra el patrón lateral de campo lejano que se obtiene haciendo NSI con esta última apodización, comparado con el correspondiente a DAS con apodización uniforme en la figura \ref{fig:lateral_pat_matrix}.a. El cálculo se ha realizado para un array de 32x32 elementos con un pitch de \(2\lambda\). Se aprecia claramente la reducción en la extensión del lóbulo principal, y una caída de amplitud en los lóbulos laterales.
 
 \begin{figure}[h]
 	\centering
@@ -290,11 +295,13 @@ Durante 2025 he realizado las siguientes publicaciones en revistas indexadas:
 	\item \fullcite{Munoz2025}
 \end{itemize}
 
-Ambos trabajos se encuentran disponibles en los Apéndices A y B de esta memoria.
+Ambos trabajos se incluyen en los Apéndices A y B de esta memoria. Cabe destacar que estos desarrollos son una continuación directa de la investigación realizada durante mi tesis doctoral \cite{Cosarinsky2024_tesis}, defendida en el año 2024.
 
-La primera publicación \cite{Cosarinsky2025} presenta el método AIM (Aperture Interpolation Method) para la reconstrucción de superficies utilizando arrays ultrasónicos bidimensionales (por ejemplo, arrays matriciales). Este trabajo presenta un método para la reconstrucción de una superficie a través de los tiempos de vuelos de los ecos generados por esa superficie. Esta reconstrucción es necesario para poder hacer beamforming cuando hay dos o más medios de propagación. La validación experimental se realizó sobre piezas de aluminio con geometría compleja, comparando los resultados ultrasónicos con datos de escaneo láser y micro-CT (tomografía de rayos X). La capacidad de AIM para obtener mapas de superficie precisos es fundamental para la generación de imágenes adaptativas y tiene aplicaciones directas tanto en ensayos no destructivos como en imagen biomédica, especialmente en escenarios de imagen transcraneal donde la refracción en superficies genera aberraciones de fase \cite{Mozaf2022, Waasdorp2025}.
+La primera publicación \cite{Cosarinsky2025} presenta el método AIM (Aperture Interpolation Method) para la reconstrucción de superficies utilizando arrays ultrasónicos bidimensionales (por ejemplo, arrays matriciales). Este trabajo presenta un método para la reconstrucción de una superficie a través de los tiempos de vuelos de los ecos generados por esa superficie. Esta reconstrucción es necesaria para poder hacer beamforming cuando hay dos o más medios de propagación. La validación experimental se realizó sobre piezas de aluminio con geometría compleja, comparando los resultados ultrasónicos con datos de escaneo láser y micro-CT (tomografía de rayos X). La capacidad de AIM para obtener mapas de superficie precisos es fundamental para la generación de imágenes adaptativas y tiene aplicaciones directas tanto en ensayos no destructivos como en imagen biomédica, especialmente en escenarios de imagen transcraneal donde la refracción en superficies genera aberraciones de fase \cite{Mozaf2022, Waasdorp2025}.
 
 La segunda publicación \cite{Munoz2025} introduce el modelo DeepEcho3D, una red neuronal convolucional tridimensional diseñada para la detección robusta de ecos superficiales en señales de ultrasonido. El trabajo aborda la problemática de la sensibilidad al ruido y a señales espurias en los métodos convencionales, proponiendo una solución basada en Deep Learning que mejora significativamente la precisión en la estimación del tiempo de vuelo. Esta estimación es necesaria para la aplicación del método AIM u otros métodos de estimación de la geometría del medio de propagación.El modelo DeepEcho3D fue desarrollado tras adquirir experiencia previa en el diseño y entrenamiento de redes neuronales aplicadas a la ecografía pulmonar \cite{Munoz2024}. Este recorrido evidencia cómo las aplicaciones de imagen ultrasónica en Ensayos No Destructivos (END) y en el ámbito biomédico se enriquecen mutuamente, ya que los avances metodológicos en un campo pueden transferirse y potenciar el desarrollo de soluciones innovadoras en el otro.
+
+En esta segunda publicación mi aportación fue en la supervisión, conceptualización, y desarrollo de software.
 
 Ambos trabajos presentan avances relevantes para el desarrollo de técnicas de imagen adaptativa, con especial enfoque en la reconstrucción y corrección de geometrías superficiales, aspecto clave para la mejora de la resolución y el contraste en imagen transcraneal y en entornos donde la refracción en superficies complejas limita el desempeño de los métodos tradicionales.
 
@@ -308,9 +315,6 @@ Durante el año 2025 se presentaron los siguientes trabajos en el \textbf{Forum 
 	\item \textbf{Adaptive 3D Planewave Imaging Through Interfaces} \\
 	Guillermo Cosarinsky, Adrián Rubio, Mario Muñoz, Jorge F. Cruza, Jorge Camacho
 	
-	\item \textbf{Sparse Arrays for 3D Ultrasound Microstructure Imaging} \\
-	Oscar Martinez-Graullera, Jorge Camacho, Guillermo Cosarinsky, Jorge Huecas, Luis Elvira, Alberto Ibañez
-	
 	\item \textbf{Cross-Domain Transfer Learning for Segmentation of Lung Ultrasound Images} \\
 	Mario Muñoz, Adrián Rubio, Guillermo Cosarinsky, Jorge Camacho
 	
@@ -321,7 +325,7 @@ Durante el año 2025 se presentaron los siguientes trabajos en el \textbf{Forum 
 	Marcelo Larrea, Mario Muñoz, Adrián Rubio, Jorge F. Cruza, Guillermo Cosarinsky
 \end{itemize}
 
-Por otro lado, se presentarán en \textbf{The 2025 IEEE International Ultrasonics Symposium (IEEE IUS 2025)}, que será la 62° edición de este congreso y tendrá lugar en Utrecht, Países Bajos, del 15 al 18 de septiembre de 2025, el siguiente trabajo:
+Por otro lado, se presentará en \textbf{The 2025 IEEE International Ultrasonics Symposium (IEEE IUS 2025)}, que será la 62° edición de este congreso y tendrá lugar en Utrecht, Países Bajos, del 15 al 18 de septiembre de 2025, el siguiente trabajo:
 
 \begin{itemize}
 	\item \textbf{Matrix Probe Offset Calibration For Robotic Arm Scanning} \\
@@ -330,15 +334,29 @@ Por otro lado, se presentarán en \textbf{The 2025 IEEE International Ultrasonic
 
 Estos trabajos abarcan temas como reconstrucción de superficies y corrección adaptativa en imagen ultrasónica, aplicaciones de inteligencia artificial en el procesamiento de imágenes de ultrasonido, segmentación y detección de ecos superficiales, y el desarrollo de hardware especializado para acelerar redes neuronales en aplicaciones biomédicas. 
 
-\subsection{Cursos}
+En el Apéndice \textbf{C} se pueden consultar todos estos trabajos.
+
+\subsection{Formación}
 
 Este año 2025 comencé a cursar el máster \textbf{Máster de Formación Permanente en Inteligencia Artificial Aplicada} de la Universidad Europea. He realizado hasta el momento los siguiente cursos:
 
 \begin{itemize}
-	\item Módulo 1: Inteligencia y razonamiento
-	\item Módulo 2: Programación y entornos de trabajo en ia
-	\item Módulo 3: Sistemas inteligentes (minería de datos, análisis y visualización)
+	\item Módulo 1: \textbf{Inteligencia y razonamiento} (6 créditos ECTS)
+	\item Módulo 2: \textbf{Programación y entornos de trabajo en IA} (6 créditos ECTS)
+	\item Módulo 3: \textbf{Sistemas inteligentes (minería de datos, análisis y visualización)} (6 créditos ECTS)
 \end{itemize}
+
+Por otro lado, he realizado las siguientes actividades formativas:
+
+\begin{itemize}
+	\item Asistencia al \textbf{I Encuentro Momentum: De la teoría a la práctica. Reflexiones sobre la IA, las RRSS
+	y el portfolio profesional} (0.4 créditos ECTS)
+	\item Microcredencial: \textbf{El portfolio como instrumento de aprendizaje y desarrollo profesional} (3 créditos ECTS)
+	\item Webinario: \textbf{Embedded AI for signal  processing on the edge} (1 hora)
+	\item Asistencia al evento \textbf{Generación D: Programa de atracción y retención de talento }(0.1 créditos ECTS)
+\end{itemize}
+
+En total, hasta el momento de redacción de esta memoria, en 2025 se han acumulado 21.5 créditos ECTS de formación. El plan de formación contemplaba para el 2025 la obtención de 40 ECTS en competencias digitales y 3 ECTS en formación complementaria. Sin embargo, por circunstancias personales, es posible que no se alcance la totalidad de los créditos previstos, por lo que se aplazarán para el año siguiente
 
 
 \section{Conclusiones y trabajo futuro}\label{sec:conclusiones}
@@ -353,14 +371,22 @@ Como trabajo futuro, el objetivo principal será avanzar en la implementación d
 \printbibliography
 
 \appendix
-
+\newpage
 \section{Apéndice A}
-
-\includepdf[pages=-]{paper_AIM.pdf}
+\includepdf[pages=-]{apendices/paper_AIM.pdf}
 
 \section{Apéndice B}
+\includepdf[pages=-]{apendices/deep_echo_3D.pdf}
 
-\includepdf[pages=-]{deep_echo_3D.pdf}
+\section{Apéndice C: trabajos presentados en congresos internacionales}
+\includepdf[pages=-]{apendices/FA2025_pwi3D_submit.pdf}
+\includepdf[pages=-]{apendices/forum_transfer_lung.pdf}
+\includepdf[pages=-]{apendices/forum_deepecho.pdf}
+\includepdf[pages=-]{apendices/forum_rubio.pdf}
+\includepdf[pages=-]{apendices/forum_sparse_oscar.pdf}
+
+\includepdf[pages=-]{apendices/matrix_probe_final_version_compressed.pdf}
+
 
 %
 %\newpage
