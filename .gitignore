@@ -1,17 +1,25 @@
-2025/memoria_2025.aux
-2025/memoria_2025.bbl
-2025/memoria_2025.bcf
-2025/memoria_2025.blg
-2025/memoria_2025.log
-2025/memoria_2025.out
-2025/memoria_2025.pdf
-2025/memoria_2025.run.xml
-2025/memoria_2025.synctex.gz
-2025/memoria_2025.toc
-2025/bibliog2025_no_abstract.bbl
+# Archivos auxiliares de LaTeX (todos los años)
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+*.dvi
 
-2025/bibliog2025_no_abstract.blg
-2025/memoria_2025.toc
+# Exclusiones específicas existentes
+2025/memoria_2025.pdf
 2025/bibi.bib
-2025/memoria_2025.toc
 2025/S0041624X20302444.bib
