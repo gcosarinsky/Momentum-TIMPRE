@@ -19,6 +19,10 @@
 *.xdv
 *.dvi
 
+# Salidas de compilacion guardadas como texto
+compilacion_*.txt
+bibliografia_compilacion_*.txt
+
 # Exclusiones específicas existentes
 2025/memoria_2025.pdf
 2025/bibi.bib
