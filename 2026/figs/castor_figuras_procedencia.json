@@ -1,0 +1,50 @@
+{
+  "selection": "Índices 0 y 96 de 192, sin selección por métricas",
+  "presentation": "Flip horizontal idéntico para imagen, GT y predicción",
+  "panels": [
+    {
+      "case": "A",
+      "report": "C:\\Users\\ggc\\PROYECTOS\\EcocardiografIa\\echo-guidance\\outputs\\castor\\surface-augmented-A-20261117-001\\metrics.json",
+      "index": 0,
+      "record_id": "pose-0218-phase-00",
+      "files": {
+        "image": "assets/000-image.png",
+        "gt": "assets/000-gt.png",
+        "pred": "assets/000-pred.png"
+      }
+    },
+    {
+      "case": "A",
+      "report": "C:\\Users\\ggc\\PROYECTOS\\EcocardiografIa\\echo-guidance\\outputs\\castor\\surface-augmented-A-20261117-001\\metrics.json",
+      "index": 96,
+      "record_id": "pose-0232-phase-00",
+      "files": {
+        "image": "assets/096-image.png",
+        "gt": "assets/096-gt.png",
+        "pred": "assets/096-pred.png"
+      }
+    },
+    {
+      "case": "B",
+      "report": "C:\\Users\\ggc\\PROYECTOS\\EcocardiografIa\\echo-guidance\\outputs\\castor\\surface-augmented-B-20261117-001\\metrics.json",
+      "index": 0,
+      "record_id": "pose-0000-phase-00",
+      "files": {
+        "image": "assets/000-image.png",
+        "gt": "assets/000-gt.png",
+        "pred": "assets/000-pred.png"
+      }
+    },
+    {
+      "case": "B",
+      "report": "C:\\Users\\ggc\\PROYECTOS\\EcocardiografIa\\echo-guidance\\outputs\\castor\\surface-augmented-B-20261117-001\\metrics.json",
+      "index": 96,
+      "record_id": "pose-0014-phase-00",
+      "files": {
+        "image": "assets/096-image.png",
+        "gt": "assets/096-gt.png",
+        "pred": "assets/096-pred.png"
+      }
+    }
+  ]
+}

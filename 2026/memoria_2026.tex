@@ -114,13 +114,15 @@
 % No incorporar analisis nuevos; resumir el TFM y el articulo de Tecniacustica.
 
 \section{Introducción y objetivos del año}\label{sec:intro}
-La presente memoria resume las actividades realizadas durante 2026 en el marco del proyecto Tecnología de imagen multi-modal para investigación pre-clínica (TIMPRE), financiado por el programa Momentum CSIC.
+La presente memoria resume las actividades realizadas durante el año 2026 en el marco del proyecto Tecnología de imagen multi-modal para investigación pre-clínica (TIMPRE), financiado por el programa Momentum CSIC.
 
-Durante 2026 se dio continuidad al estudio de la técnica de formación de imagen \textit{Null Subtraction Imaging} (NSI)~\cite{Agarwal2019}, iniciado en la anualidad anterior~\cite{CosarinskyMemoria2025}. Esta técnica combina imágenes obtenidas con distintas apodizaciones de recepción, es decir, con diferentes distribuciones de pesos aplicados a las señales de los elementos del array antes de sumarlas para formar cada imagen. La elección de estos pesos influye en el equilibrio entre la resolución espacial y la supresión de lóbulos laterales. Durante el desarrollo del trabajo en 2025 se identificaron limitaciones asociadas al recorte de la apertura de recepción en las proximidades de los bordes del array. Estas observaciones motivaron la investigación de nuevas apodizaciones diseñadas mediante representaciones neuronales implícitas (\textit{Implicit Neural Representations}, INR)~\cite{Molaei2023}. Estas representaciones utilizan una red neuronal para describir una función continua a partir de sus coordenadas de entrada; en este caso, la red recibe las coordenadas del punto de la imagen y del elemento del array y devuelve el peso de apodización correspondiente. Esto permite adaptar los pesos de recepción a la geometría de cada punto de la imagen. Como primer paso, se desarrolló un Trabajo de Fin de Máster\footnote{Este trabajo corresponde al Máster de Formación Permanente en Inteligencia Artificial Aplicada de la Universidad Europea, iniciado en 2025 como parte de las actividades formativas del programa Momentum CSIC. La memoria completa del TFM se adjunta en el Anexo~\ref{anexo:tfm}.} centrado en la optimización de una única apodización mediante una INR~\cite{CosarinskyTFM2026}. Posteriormente, esta línea se amplió al diseño de múltiples apodizaciones y a la combinación de las envolventes de las imágenes resultantes mediante una segunda red neuronal, denominada \textit{mixer}, dando lugar al trabajo presentado en Tecniacústica 2026~\cite{CosarinskyTecniacustica2026}.
+Durante 2026 se continuó con el estudio de la técnica de formación de imagen \textit{Null Subtraction Imaging} (NSI)~\cite{Agarwal2019}, iniciado en el año anterior~\cite{CosarinskyMemoria2025}. Esta técnica combina imágenes obtenidas con distintas apodizaciones de recepción, es decir, con diferentes distribuciones de pesos aplicados a las señales de los elementos del array\footnote{Un array es una sonda de ultrasonidos formada por un conjunto de elementos transductores que pueden excitarse y cuyas señales pueden registrarse de forma independiente, lo que permite enfocar y dirigir electrónicamente el haz ultrasónico.} antes de sumarlas para formar cada imagen. La elección de estos pesos influye en el equilibrio entre resolución espacial y supresión de lóbulos laterales. Durante el desarrollo del trabajo en 2025 se identificaron limitaciones en el método, asociadas al recorte de la apertura de recepción en los puntos de la imagen próximos a los bordes del apertura de la sonda. Estas observaciones motivaron la investigación de nuevas apodizaciones diseñadas mediante representaciones neuronales implícitas (\textit{Implicit Neural Representations}, INR)~\cite{Molaei2023}. Estas representaciones utilizan una red neuronal para describir una función continua a partir de sus coordenadas de entrada; en este caso, la red recibe las coordenadas del punto de la imagen y del elemento del array y devuelve el peso de apodización correspondiente. Esto permite adaptar los pesos de recepción a la geometría de cada punto de la imagen. Como primer paso, se desarrolló un Trabajo de Fin de Máster\footnote{Este trabajo corresponde al Máster de Formación Permanente en Inteligencia Artificial Aplicada de la Universidad Europea, iniciado en 2025 como parte de las actividades formativas del programa Momentum CSIC. La memoria completa del TFM se adjunta en el Anexo~\ref{anexo:tfm}.} centrado en la optimización de una única apodización mediante una INR~\cite{CosarinskyTFM2026}. Posteriormente, esta línea de trabajo se amplió al diseño de múltiples apodizaciones y a la combinación de las envolventes de las imágenes resultantes mediante una segunda red neuronal dando lugar al trabajo presentado en Tecniacústica 2026~\cite{CosarinskyTecniacustica2026}.
 
-En cuanto a la formación en competencias digitales, durante 2026 cursé los últimos módulos del Máster de Formación Permanente en Inteligencia Artificial Aplicada de la Universidad Europea y realicé el Trabajo de Fin de Máster. Esta formación me permitió profundizar en el diseño, entrenamiento y evaluación de modelos de aprendizaje automático y aplicar estos conocimientos al desarrollo de apodizaciones para imagen ultrasónica.
+En cuanto a la formación en competencias digitales, durante 2026 cursé los últimos módulos del Máster de Formación Permanente en Inteligencia Artificial (IA) Aplicada de la Universidad Europea y realicé el Trabajo de Fin de Máster. Esta formación me permitió profundizar en el diseño, entrenamiento y evaluación de modelos de aprendizaje automático y aplicar estos conocimientos al desarrollo de apodizaciones para imagen ultrasónica.
 
-Con el propósito de ampliar la aplicación de estas competencias en inteligencia artificial a otros problemas de imagen ultrasónica, inicié una estancia de investigación en la Universidad Complutense de Madrid (UCM), en el Departamento de Estructura de la Materia, Física Térmica y Electrónica, bajo la supervisión del profesor Joaquín López Herraiz. La estancia tiene como objetivo investigar métodos de IA para el guiado de ecocardiografías, incorporando así una nueva línea de trabajo centrada en la asistencia durante la adquisición de imágenes. El periodo previsto para la estancia comprende del 16 de septiembre al 11 de diciembre de 2026.
+Con el propósito de ampliar la aplicación de estas competencias en inteligencia artificial a otros problemas de imagen ultrasónica, inicié en septiembre de 2026 una estancia de investigación en la Universidad Complutense de Madrid (UCM), en el Departamento de Estructura de la Materia, Física Térmica y Electrónica, bajo la supervisión del profesor Joaquín López Herraiz. La estancia tiene como objetivo investigar métodos de IA para el guiado de ecocardiografías, incorporando así una nueva línea de trabajo centrada en la asistencia durante la adquisición de imágenes. El periodo previsto para la estancia comprende del 16 de septiembre al 11 de diciembre de 2026.
+
+En relación con los objetivos de TIMPRE, el trabajo se centró en el componente ultrasónico de la imagen multimodal. El desarrollo de métodos de formación de imagen y de asistencia a la adquisición busca mejorar la calidad y la reproducibilidad de las imágenes ecográficas, aspectos relevantes para su combinación con otras modalidades. Aunque la línea de guiado se inició en ecocardiografía, las herramientas de simulación y aprendizaje automático estudiadas proporcionan una base metodológica para explorar futuras aplicaciones en imagen preclínica.
 
 Como complemento a estas actividades de formación e investigación, participé en la organización del simposio SABIA 2026 (\textit{Symposium on Advanced Biomedical Instrumentation \& Applications}) y fui \textit{chairman} en una de sus sesiones, contribuyendo al intercambio científico en el ámbito de la instrumentación biomédica.
 
@@ -273,41 +275,148 @@ En conjunto, el trabajo estableció un esquema de aprendizaje de múltiples apod
 % Extension orientativa: 1--1.5 paginas.
 
 \subsection{Marco y objetivos de la estancia}
-\pendiente{Presentar la estancia bajo la supervisión de Joaquín López Herraiz, en el Departamento de Estructura de la Materia, Física Térmica y Electrónica de la UCM. El periodo previsto en la carta de invitación es del 16 de septiembre al 11 de diciembre de 2026; actualizar con las fechas efectivas al cierre.}
+Durante 2026 se inició una estancia de investigación en la Universidad Complutense de Madrid (UCM), en el Departamento de Estructura de la Materia, Física Térmica y Electrónica, bajo la supervisión del profesor Joaquín López Herraiz, del grupo de investigación de Física Nuclear. El periodo previsto en la carta de invitación comprende del 16 de septiembre al 11 de diciembre de 2026. Esta estancia da continuidad a la colaboración con la UCM contemplada en el marco del proyecto TIMPRE y permite ampliar la aplicación de las competencias en inteligencia artificial adquiridas durante el máster y los trabajos de investigación descritos en la sección anterior.
 
-\pendiente{Introducir brevemente el objetivo de investigar métodos de IA para el guiado de ecocardiografía transtorácica (TTE) y su relación con las competencias desarrolladas en el proyecto.}
+El objetivo de la estancia es investigar métodos de IA para el guiado de ecocardiografía transtorácica (\textit{transthoracic echocardiography}, TTE). En este contexto, el guiado se entiende como la asistencia al operador para ajustar la posición y la orientación de la sonda hasta obtener las vistas de interés. Se plantea estudiar cómo la información contenida en las imágenes ecográficas puede utilizarse para caracterizar la vista adquirida y orientar los movimientos necesarios para aproximarse a una vista objetivo.
 
-\subsection{Actividades iniciales y estado de la línea}
-\pendiente{Documentar únicamente las actividades efectivamente realizadas y el estado inicial del trabajo al cierre de la memoria. Añadir los próximos pasos inmediatos sin presentar como resultados las tareas previstas.}
+La conexión con el trabajo previo reside en el uso de modelos de aprendizaje automático aplicados a la imagen ultrasónica. La experiencia en simulación, diseño de redes neuronales y evaluación de reconstrucciones proporciona una base metodológica para abordar este nuevo problema, centrado en la asistencia durante la adquisición. La estancia se plantea como una etapa inicial para definir el problema de guiado, estudiar los enfoques disponibles y establecer un entorno de experimentación que permita desarrollar y evaluar propuestas. Las actividades realizadas y el estado alcanzado se describen en la siguiente subsección.
 
-\section{Formación y difusión de resultados}\label{sec:formacion}
-% Extension orientativa: 1--2 paginas.
+\subsection{Revisión bibliográfica y antecedentes}\label{sec:revision_guiado}
+Como parte de las actividades iniciales de la estancia, se realizó una revisión de estrategias de aprendizaje para el guiado en ecocardiografía. Para comparar los antecedentes, conviene definir primero qué información se obtiene durante la exploración y qué corrección se pretende estimar.
 
-\subsection{Formación y competencias adquiridas}
-\pendiente{Resumir la finalización del Máster de Formación Permanente en Inteligencia Artificial Aplicada de la Universidad Europea y la realización del TFM. La ficha de actividad de 2026 recoge los módulos 5 a 10 con 36 ECTS; completar fechas y otras actividades con sus justificantes, evitando duplicidades entre anualidades.}
+Durante una adquisición se obtiene una secuencia de imágenes ecográficas $\mathcal{I}_1,\ldots,\mathcal{I}_t$. Cada imagen $\mathcal{I}_t$ corresponde a una posición y una orientación de la sonda, conjuntamente denominadas \textit{pose}. Esta pose existe físicamente aunque no se disponga de un sistema que la mida. Si se expresa respecto a un sistema de referencia fijo $F$, puede representarse mediante la transformación rígida
+\begin{equation}
+  T_t=\begin{pmatrix}R_t & \mathbf{p}_t\\ \mathbf{0}^{\mathsf T} & 1\end{pmatrix},
+  \label{eq:guiado_pose}
+\end{equation}
+que transforma coordenadas del sistema de la sonda al sistema $F$. El vector $\mathbf{p}_t$ describe la traslación mediante tres componentes y la matriz $R_t$ describe la rotación, con tres grados de libertad. La imagen depende también de la anatomía del paciente y del estado del corazón; por ello, una pose expresada en un marco externo no define por sí sola una vista anatómica.
+
+La exploración busca obtener vistas estándar, como la apical de cuatro cámaras (A4C) o la paraesternal de eje largo (PLAX), cuyas ventanas de adquisición, orientación y estructuras de interés se describen en las recomendaciones de la American Society of Echocardiography~\cite{Mitchell2019TTE}. Estas vistas se definen por su contenido anatómico y no por una posición universal de la sonda: la pose que permite obtenerlas varía entre pacientes. Para formular el guiado, se denota por $v$ la vista deseada y por $T_{\star,v}$ una pose que permite adquirirla en el paciente examinado. Esta pose representa una referencia válida, sin suponer que exista una única solución aceptable.
+
+El problema consiste en estimar la transformación desde la pose actual hasta una pose objetivo. Si ambas se conocen en el mismo sistema $F$, la corrección expresada en el sistema local de la sonda es
+\begin{equation}
+  \Delta T_t=T_t^{-1}T_{\star,v},
+  \qquad T_{\star,v}=T_t\,\Delta T_t.
+  \label{eq:guiado_correccion}
+\end{equation}
+Esta transformación contiene tanto el desplazamiento como el cambio de orientación necesarios. En un sistema de guiado visual no se conocen necesariamente $T_t$ ni $T_{\star,v}$: el modelo intenta inferir la corrección a partir de la imagen actual $\mathcal{I}_t$ y de la vista solicitada $v$, o a partir del historial de imágenes $\mathcal{H}_t=(\mathcal{I}_1,\ldots,\mathcal{I}_t)$. El historial puede aportar contexto sobre las estructuras observadas y los cambios producidos al mover la sonda. Otros métodos aproximan el guiado mediante maniobras discretas o acciones sucesivas, en lugar de predecir directamente toda la transformación.
+
+Algunos trabajos incorporan además seguimiento de la sonda mediante sensores o un brazo robótico~\cite{Jiang2024,Yue2025,Wang2026}. Tras la calibración entre el dispositivo de seguimiento y la sonda, estos sistemas permiten expresar sus poses en un marco externo, por ejemplo el de un robot. Ese marco no coincide necesariamente con un sistema anatómico del paciente. El seguimiento permite calcular el movimiento relativo entre imágenes, pero por sí solo no identifica qué pose produce una vista estándar. Si la pose actual y una referencia experta se han registrado en el mismo marco, sí puede calcularse una corrección como la de la Ecuación~\eqref{eq:guiado_correccion} sin conocer explícitamente la transformación entre ese marco y el corazón. Por ello, debe distinguirse el uso de las poses para generar etiquetas durante el entrenamiento de su uso como entrada del modelo durante una adquisición nueva.
+
+Con esta formulación, los antecedentes pueden compararse según la información que utilizan para estimar los movimientos, cómo se aprende a predecirlos y cómo se establece que se ha alcanzado una vista válida.
+
+En el \textit{aprendizaje supervisado}, el modelo se entrena con ejemplos que relacionan una entrada con una salida de referencia y ajusta sus parámetros para reducir el error de sus predicciones~\cite{BishopBishop2024}. En el guiado, las entradas pueden ser imágenes y las salidas de referencia, transformaciones correctoras $\Delta T_t$ o clases de maniobra obtenidas de adquisiciones anotadas.
+
+En el \textit{aprendizaje por refuerzo}, un agente aprende una política, es decir, una regla para elegir acciones a partir de sus observaciones, buscando maximizar la recompensa acumulada durante la interacción con un entorno~\cite{SuttonBarto2018}. En este caso, las acciones pueden ser movimientos de la sonda y la recompensa puede valorar la aproximación a la vista objetivo. La señal de aprendizaje evalúa las consecuencias de las acciones, sin requerir una etiqueta de movimiento correcto para cada observación.
+
+Una primera línea de métodos supervisados utiliza adquisiciones expertas con imágenes y poses de la sonda sincronizadas. Cardiac Copilot~\cite{Jiang2024} identifica una pose de referencia correspondiente al plano objetivo y calcula las transformaciones desde otras poses hasta ella. Estas transformaciones proporcionan etiquetas de corrección del tipo $\Delta T_t$ definido anteriormente. La política aprende a estimarlas desde la imagen y la vista solicitada, sin exigir la reproducción de cada paso de una trayectoria experta. EchoWorld~\cite{Yue2025} y UltraStar~\cite{Wang2026} amplían esta línea mediante representaciones que aprovechan el movimiento y el historial de observaciones. El protocolo de imagen única de EchoWorld estima la corrección desde $\mathcal{I}_t$; su protocolo secuencial añade imágenes históricas y movimientos relativos. UltraStar utiliza la imagen actual y observaciones históricas seleccionadas como anclas, junto con las transformaciones relativas que las relacionan con la vista actual. En estos protocolos secuenciales, disponer de las imágenes del historial no sustituye la información geométrica adicional que requiere el modelo. En ambos casos se mantienen referencias de planos estándar y supervisión geométrica para aprender las correcciones.
+
+Otro enfoque supervisado es el marco de evaluación de calidad y guiado de Jeong et al.~\cite{Jeong2026MultiTask}. Su predictor de maniobras se entrena con transiciones desde vistas estándar hacia vistas no estándar, realizadas mediante movimientos conocidos y etiquetados. La predicción de la maniobra se formula como una tarea de clasificación supervisada. Esta distinción es relevante: disponer de secuencias de movimientos etiquetados no implica que el método utilice aprendizaje por refuerzo.
+
+Una segunda línea aprende mediante interacción con un entorno simulado. En \textit{Toward Agentic Echocardiography}~\cite{Jeong2026}, una política se entrena por refuerzo en un simulador derivado de tomografía computarizada (CT). La recompensa combina la similitud entre la imagen actual y una imagen objetivo, calculada con características de DINOv2, con términos geométricos auxiliares. El método evita requerir trayectorias expertas etiquetadas, aunque conserva una pose PLAX de referencia anotada por un experto y proporciona al crítico información privilegiada relativa a esa meta. Además, la política utiliza imágenes y poses durante su funcionamiento, aspecto que debe considerarse al valorar su aplicación a un sistema de guiado.
+
+Cao et al.~\cite{Cao2026} proponen una representación diferente del objetivo mediante criterios anatómicos estadísticos. A partir de segmentaciones, extraen proporciones de áreas y relaciones espaciales entre estructuras, y ajustan distribuciones gaussianas de estas características en vistas estándar. Estas distribuciones constituyen los \textit{anatomical priors}, utilizados para construir el estado y la recompensa de una política de aprendizaje por refuerzo. La meta queda definida por la concordancia con características anatómicas de vistas aceptables, en lugar de por una imagen o pose individual. El enfoque sigue requiriendo conocimiento experto para seleccionar los ejemplos estándar, definir las características y obtener las anotaciones de segmentación. Su demostración se limita al ajuste de la vista A4C mediante rotaciones, evaluado en simulación y fantoma.
+
+La revisión permitió distinguir dos decisiones complementarias para plantear la nueva línea: el mecanismo con el que se aprende a actuar y la representación de una vista válida. El aprendizaje por refuerzo puede utilizar tanto una referencia visual individual como criterios anatómicos estadísticos; por tanto, su elección no determina por sí sola cómo se define la meta. Los criterios anatómicos ofrecen una vía interpretable para formularla, cuya utilidad depende de la selección de características, de sus distribuciones y de la calidad de la segmentación. Estos antecedentes proporcionan un marco para estudiar objetivos de adquisición y señales de aprendizaje, así como para diferenciar la información disponible durante el entrenamiento de la que necesitaría el sistema durante su uso.
+
+\subsection{Simulador TARTAGLIA 2D}\label{sec:simulador_tartaglia}
+Para el entrenamiento y las primeras pruebas de los modelos de guiado se utilizará TARTAGLIA 2D, un simulador de ecocardiografía desarrollado en el grupo del profesor Joaquín López Herraiz en la UCM en el marco del proyecto TARTAGLIA~\cite{ProyectoTartaglia2021}. Esta herramienta genera imágenes ecográficas bidimensionales a partir de una escena anatómica tridimensional con movimiento cardíaco. Permite modificar la posición y la orientación de la sonda y seleccionar la fase del ciclo cardíaco, proporcionando un entorno controlado para estudiar la relación entre la pose de adquisición y la imagen obtenida.
+
+El caso disponible combina una anatomía torácica procedente de CT con un corazón incorporado a partir del modelo CONRAD de Unberath et al.~\cite{Unberath2015HeartSSM}. Este trabajo presenta un modelo estadístico de forma cardíaca de cuatro dimensiones, es decir, de geometría tridimensional y su evolución temporal a lo largo del ciclo cardíaco. En el paquete del simulador, la anatomía y el movimiento se suministran ya preparados mediante geometrías, etiquetas y posiciones de dispersores en distintas fases. Por tanto, el corazón utilizado no debe interpretarse como una segmentación directa del corazón del paciente del CT torácico.
+
+Actualmente se dispone de dos casos virtuales para realizar las pruebas iniciales con el simulador. Para ampliar la variabilidad anatómica del entorno de entrenamiento y evaluación, el profesor Joaquín López Herraiz está generando nuevos casos a partir de CT de otros pacientes.
+
+La formación de imagen utiliza una simulación simplificada basada en la función de dispersión de punto (\textit{point spread function}, PSF), que describe la respuesta del sistema a un dispersor puntual. Para cada pose de la sonda y fase cardíaca, se representa el tejido mediante dispersores con amplitudes asociadas a su tipo y se superponen las respuestas complejas precalculadas de esos puntos. Conceptualmente, esta operación corresponde a una convolución de la distribución de dispersores con la PSF, cuando esta puede considerarse espacialmente invariante. A partir de la señal compleja resultante se obtiene la envolvente y se aplica el procesamiento B-mode. Así, el simulador genera directamente una aproximación de la imagen conformada: no simula las señales adquiridas por cada canal o elemento del array ni reproduce explícitamente su posterior procesamiento mediante beamforming.
+
+La Figura~\ref{fig:panel_simulador_tartaglia} muestra un ejemplo de vista apical de cuatro cámaras (A4CH) generada con el simulador, junto con la geometría tridimensional de adquisición y las etiquetas anatómicas del plano correspondiente.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{panel_simulador_tartaglia.png}
+  \caption{Ejemplo de una vista A4CH generada en TARTAGLIA 2D: (a) modelo cardíaco tridimensional con la posición de la sonda y el sector de adquisición; (b) etiquetas anatómicas de las cavidades y paredes cardíacas en el plano de imagen; (c) imagen ecográfica simulada en modo B. Los colores identifican el ventrículo izquierdo (VI), el ventrículo derecho (VD), la aurícula izquierda (AI) y la aurícula derecha (AD).}
+  \label{fig:panel_simulador_tartaglia}
+\end{figure}
+
+La disponibilidad simultánea de imágenes, poses y etiquetas anatómicas permitirá construir secuencias con movimientos conocidos, definir objetivos de adquisición y evaluar las correcciones propuestas por los modelos. La información geométrica del simulador podrá emplearse para generar etiquetas, recompensas o criterios de evaluación durante el desarrollo, distinguiéndola de las entradas que necesitaría un sistema de guiado durante su uso. El simulador se utilizará inicialmente como banco de pruebas controlado; la evaluación en adquisiciones reales requerirá una etapa posterior. Asimismo, las referencias de vista calculadas geométricamente deberán revisarse desde el punto de vista anatómico antes de adoptarlas como objetivos de guiado.
+
+\subsection{Modelo de segmentación para la vista A4CH}\label{sec:segmentacion_a4ch}
+\begingroup
+\emergencystretch=2em
+Tomando como referencia la propuesta de Cao et al.~\cite{Cao2026}, se entrenó un modelo para segmentar las cuatro cavidades cardíacas y las válvulas mitral y tricúspide en imágenes simuladas de la vista A4CH y sus perturbaciones. Este desarrollo constituye un primer paso para discutir con los médicos del proyecto qué medidas anatómicas pueden extraerse de la segmentación y utilizarse como criterios de guiado.
+
+Se adaptó una U-Net del proyecto CASTOR~\cite{CastorSoftware}, con pesos preentrenados en CAMUS~\cite{Leclerc2019CAMUS}, sustituyendo su salida por siete clases: fondo, cavidades de VI, VD, AI y AD, mitral y tricúspide. El modelo recibe una imagen B-mode y devuelve una máscara por píxel, sin utilizar poses ni información temporal. El conjunto del caso A contiene 1.280 imágenes de 256 poses, repartidas en 896 para entrenamiento, 192 para validación y 192 para prueba. Las fases de cada pose permanecieron juntas y se separaron las poses entre particiones. Las etiquetas proceden del simulador y la entrada de la red es de $512\times512$ píxeles.
+
+El entrenamiento combinó entropía cruzada ponderada (\textit{weighted cross-entropy loss}) y pérdida de solapamiento Dice (\textit{soft Dice loss})~\cite{BishopBishop2024,Milletari2016Dice}. La primera pondera los errores según la frecuencia de las clases; la segunda favorece el solapamiento con las máscaras de referencia. Se entrenó primero el decodificador y después se ajustó también el extractor de características, seleccionando el modelo mediante la pérdida de validación.
+
+La evaluación utilizó Dice para medir el solapamiento de las máscaras y Surface Dice (\textit{surface Dice similarity coefficient})~\cite{Nikolov2021SurfaceDice} para medir la coincidencia de contornos. Esta última es una métrica de evaluación, distinta de la pérdida Dice del entrenamiento: en 2D cuantifica la fracción de longitud de ambos contornos situada a una distancia del otro menor o igual que una tolerancia. La Tabla~\ref{tab:castor_dice} presenta los resultados del modelo en A y en una segunda anatomía, B, incluyendo Surface Dice valvular a 1~mm. Las medias consideran imágenes con la estructura presente y cuentan las predicciones vacías como cero.
 
 \begin{table}[htbp]
   \centering
   \small
-  \begin{tabularx}{\textwidth}{@{}Xll@{}}
+  \begin{tabular}{@{}lrr@{}}
     \toprule
-    \textbf{Actividad} & \textbf{Periodo} & \textbf{ECTS / horas} \\
+    \textbf{Estructura} & \textbf{Caso A} & \textbf{Caso B}\\
     \midrule
-    Máster en IA Aplicada, módulos 5 a 10 (incluido el TFM) & Ene.--may. 2026 & 36 ECTS \\
+    \multicolumn{3}{@{}l}{\textit{Dice de solapamiento}}\\
+    VI & 0,96 & 0,88 \\
+    VD & 0,95 & 0,78 \\
+    AI & 0,94 & 0,78 \\
+    AD & 0,95 & 0,59 \\
+    Mitral & 0,56 & 0,29 \\
+    Tricúspide & 0,54 & 0,17 \\
+    \midrule
+    \multicolumn{3}{@{}l}{\textit{Surface Dice de válvulas (1~mm)}}\\
+    Mitral & 0,95 & 0,54 \\
+    Tricúspide & 0,94 & 0,42 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Resultados medios del modelo a resolución nativa sobre 192 imágenes de cada caso virtual. El entrenamiento se realizó únicamente con el caso A. El Surface Dice se presenta con tolerancia exploratoria de 1~mm.}
+  \label{tab:castor_dice}
+\end{table}
+
+La segmentación fue más precisa en el caso A, especialmente en las cavidades. En B disminuyó el rendimiento y persistieron errores de contorno y localización valvular (Figuras~\ref{fig:castor_caso_a} y~\ref{fig:castor_caso_b}).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{castor_segmentacion_caso_A.pdf}
+  \caption{Segmentación en dos poses de prueba del caso A. De izquierda a derecha: B-mode, etiquetas del simulador y predicción del modelo. Los colores identifican las cuatro cavidades y las válvulas mitral y tricúspide.}
+  \label{fig:castor_caso_a}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{castor_segmentacion_caso_B.pdf}
+  \caption{Segmentación en dos poses del caso B con el mismo modelo y presentación de la Figura~\ref{fig:castor_caso_a}. Se observan discrepancias de contorno, regiones espurias y errores de localización valvular.}
+  \label{fig:castor_caso_b}
+\end{figure}
+
+Los resultados se limitan a dos anatomías simuladas y no constituyen una validación clínica ni de guiado. Será necesario ampliar el entrenamiento y la evaluación con los nuevos casos virtuales que el profesor Joaquín López Herraiz está generando a partir de CT de otros pacientes, descritos en la Sección~\ref{sec:simulador_tartaglia}, reservando pacientes simulados independientes para evaluar la generalización del modelo. El siguiente paso será discutir con los médicos qué medidas de forma, tamaño relativo o relaciones entre estructuras resultan útiles, qué precisión requieren y cómo incorporarlas a un modelo de guiado. Las métricas de segmentación empleadas aquí no establecen por sí solas la calidad de una vista ecográfica.
+\FloatBarrier
+\endgroup
+
+\section{Cómputo de créditos ECTS}\label{sec:formacion}
+\begin{table}[htbp]
+  \centering
+  \small
+  \begin{tabularx}{\textwidth}{@{}Xlr@{}}
+    \toprule
+    \textbf{Actividad} & \textbf{Periodo} & \textbf{ECTS} \\
+    \midrule
+    Máster en IA Aplicada, módulos 5 a 10 (incluido el TFM) & Ene.--may. 2026 & 36 \\
+    Estancia de investigación en la Universidad Complutense de Madrid & 16 sept.--11 dic. 2026 & 18,5 \\
+    Presente memoria anual & 2026 & 40 \\
+    \midrule
+    \multicolumn{2}{r}{\textbf{Total}} & \textbf{94,5} \\
     \bottomrule
   \end{tabularx}
-  \caption{Actividades formativas correspondientes a 2026. Completar con las actividades acreditadas del periodo.}
+  \caption{Créditos ECTS correspondientes a las actividades de 2026. El periodo de la estancia es el previsto en la carta de invitación.}
   \label{tab:formacion}
 \end{table}
 
-\pendiente{Relacionar brevemente la formación con las competencias aplicadas: simulación, aprendizaje supervisado, diseño y evaluación de modelos y procesamiento de imagen ultrasónica.}
-
-\subsection{Difusión y colaboraciones}
-\pendiente{Documentar la contribución presentada en Tecniacústica 2026, su relación con el TFM y otras actividades acreditadas de difusión o colaboración realizadas durante el año.}
+{\small Los créditos de la estancia se calcularon a partir de 58 días laborables de 8 horas, que suman 464 horas. Aplicando una equivalencia de 25 horas por ECTS, se obtienen $464/25=18{,}56$ ECTS; en la tabla se consignan 18,5 ECTS, redondeados a la baja a una décima.\par}
 
 \section{Balance del año y continuidad}\label{sec:conclusiones}
-% Extension orientativa: una pagina.
-\pendiente{Sintetizar los desarrollos realizados, la aplicación de la formación en IA a la investigación en ultrasonidos y el inicio de la colaboración con la UCM. Cerrar con una descripción breve de la continuidad prevista de ambas líneas.}
+El trabajo de 2026 permitió avanzar en el diseño de apodizaciones mediante redes neuronales e iniciar una línea de guiado ecocardiográfico apoyada en simulación y segmentación. Se continuará la colaboración con el grupo del profesor Joaquín López Herraiz en la UCM, con el objetivo de ampliar la evaluación a nuevos casos simulados y definir, junto con los médicos del proyecto, criterios anatómicos para el guiado.
 
 \FloatBarrier
 {\raggedright\printbibliography[heading=bibintoc,title={Referencias}]\par}
@@ -316,15 +425,15 @@ En conjunto, el trabajo estableció un esquema de aprendizaje de múltiples apod
 \appendix
 \clearpage
 \section{Memoria completa del Trabajo de Fin de Máster}\label{anexo:tfm}
-%\includepdf[pages=-]{apendices/TFM_cosarinsky_main.pdf}
+\includepdf[pages=-]{apendices/TFM_cosarinsky_main.pdf}
 
 \clearpage
 \section{Artículo presentado en Tecniacústica 2026}\label{anexo:tecniacustica}
-%\includepdf[pages=-]{apendices/cosarinsky_tecniacustica2026.pdf}
+\includepdf[pages=-]{apendices/cosarinsky_tecniacustica2026.pdf}
 
-\clearpage
-\section{Justificantes de formación, estancia y difusión}\label{anexo:justificantes}
-\pendiente{Incorporar únicamente los justificantes que se requieran para la memoria.}
+%\clearpage
+%\section{Justificantes de formación, estancia y difusión}\label{anexo:justificantes}
+%\pendiente{Incorporar únicamente los justificantes que se requieran para la memoria.}
 % Ejemplo: \includepdf[pages=-]{apendices/justificante.pdf}
 
 \end{document}
