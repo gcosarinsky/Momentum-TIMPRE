@@ -1,0 +1,40 @@
+PRESENTACIÓN TIMPRE 2026 — PRIMERA PROPUESTA
+
+27 diapositivas en formato panorámico 16:9.
+Contenido basado en la memoria anual del 24 de noviembre de 2026.
+
+COMPILACIÓN
+Desde esta carpeta, ejecutar dos veces:
+pdflatex -interaction=nonstopmode -halt-on-error memoria_2026_beamer.tex
+
+El archivo .tex incluye notas para el ponente en algunas diapositivas.
+Las figuras conservan su procedencia de la memoria, el TFM y Tecniacústica.
+
+ESTRUCTURA
+1. Portada
+2. Contribución al proyecto TIMPRE
+3. Actividades de 2026
+4. NSI: tres apodizaciones de recepción
+5. NSI: combinación de las envolventes
+6. Limitación cerca de los extremos del array
+7. TFM: una apodización representada por una INR
+8. TFM: aprendizaje con reflectores simulados
+9. TFM: comparación de las imágenes DAS
+10. TFM: resolución lateral y SNR
+11. Tecniacústica: múltiples apodizaciones y mixer
+12. Tecniacústica: entrenamiento y evaluación
+13. Mejoras locales cerca del borde en simulación
+14. Evaluación experimental en PICMUS
+15. Balance del trabajo en beamforming
+16. Estancia de investigación en la UCM
+17. Guiado: estimar una corrección de la sonda
+18. Antecedentes: cómo se aprende el guiado
+19. Criterios anatómicos para definir la meta
+20. TARTAGLIA 2D: entorno de experimentación
+21. Segmentación de la vista A4CH
+22. Segmentación: poses de prueba del caso A
+23. Segmentación: transferencia al caso B
+24. La precisión disminuye en la segunda anatomía
+25. Formación y cómputo de ECTS
+26. Trabajos y participación científica
+27. Balance y continuidad
