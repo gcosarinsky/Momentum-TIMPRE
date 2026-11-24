@@ -6,6 +6,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
 \usepackage{lmodern,graphicx,booktabs,amsmath,array}
+\usepackage{tikz}
 \graphicspath{{figs/}}
 \definecolor{navy}{HTML}{16364B}
 \definecolor{teal}{HTML}{007F86}
@@ -54,18 +55,22 @@
 \begin{frame}{Contribución al proyecto TIMPRE}
 \relax
 {\large El trabajo de 2026 se centra en el\newline\alert{componente ultrasónico de la imagen multimodal}.\par}
-\par\vspace{5mm}
-\begin{columns}[T,onlytextwidth]
-\column{.47\textwidth}
-\textbf{Formación de imagen}
-\par Aprender pesos de recepción para estudiar el compromiso entre resolución y supresión del fondo.
-\column{.47\textwidth}
-\textbf{Asistencia a la adquisición}
-\par Explorar métodos de guiado para mejorar la reproducibilidad de las vistas ecográficas.
-\end{columns}
-\par\vspace{5mm}
-Herramientas de simulación y aprendizaje automático con posibles aplicaciones futuras en imagen preclínica.
-\note{La relación con la multimodalidad es metodológica. Durante este trabajo no se ha realizado una integración entre modalidades ni una validación preclínica del guiado.}
+\par\vspace{3mm}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,
+ branch/.style={align=left,text width=5.5cm,font=\fontsize{10}{12}\selectfont,inner sep=0pt},
+ link/.style={thick,draw=teal},
+ flow/.style={->,>=stealth,thick,draw=teal}]
+\node[branch,anchor=north] (formation) at (3,0) {\textbf{Formación de imagen}\\\textbf{(beamforming)}};
+\node[branch,anchor=north] (guidance) at (10,0) {\textbf{Asistencia a la adquisición}\\\textbf{en ecocardiografía}};
+\node[align=center,text width=9cm,draw=teal,fill=teal!5,rounded corners=2pt,inner sep=7pt,font=\fontsize{11}{13}\selectfont] (common) at (6.5,-1.90) {\textbf{Base metodológica común}\\Herramientas de simulación y aprendizaje automático};
+\draw[link] (formation.south)--(3,-1.00)--(6.5,-1.00);
+\draw[link] (guidance.south)--(10,-1.00)--(6.5,-1.00);
+\draw[flow] (6.5,-1.00)--(common.north);
+\node[align=center,text width=10cm,font=\fontsize{11}{13}\selectfont] (preclinical) at (6.5,-3.37) {\textbf{Posibles aplicaciones futuras en imagen preclínica}\\Mejora de la formación de imagen y asistencia a la adquisición};
+\draw[flow,dashed] (common.south)--(preclinical.north);
+\end{tikzpicture}
+\note{Ambas líneas comparten herramientas de simulación y aprendizaje automático. Esta base metodológica puede contribuir también a futuras aplicaciones preclínicas de formación de imagen y asistencia a la adquisición. La conexión con la multimodalidad es metodológica: el trabajo no ha realizado una integración entre modalidades ni una validación preclínica del guiado. La flecha discontinua señala esa proyección futura.}
 \end{frame}
 
 % 03 -----------------------------------------------------------------
@@ -105,16 +110,16 @@ Herramientas de simulación y aprendizaje automático con posibles aplicaciones 
 % 06 -----------------------------------------------------------------
 \begin{frame}{Limitación cerca de los extremos del array}
 \relax
-\begin{enumerate}
-\item La subapertura centrada en el punto de imagen puede superar los límites físicos del array.
-\par\vspace{3mm}
-\item El recorte puede desequilibrar los pesos positivos y negativos y alterar el nulo.
-\par\vspace{3mm}
-\item Reducir la subapertura de forma simétrica conserva el equilibrio, pero pierde apertura efectiva.
-\end{enumerate}
-\par\vspace{4mm}
-\takeaway{Motivación: aprender apodizaciones que tengan en cuenta la geometría disponible.}
-\source{Observaciones del trabajo previo con NSI y motivación del artículo de Tecniacústica 2026.}
+\setlength{\parskip}{2pt}
+\fig[3.7cm]{nsi_apodization_profiles.png}
+{\small\textbf{(a)} Recorte simétrico cerca del borde.\quad
+\textbf{(b)} Sin recorte, lejos del borde.\par}
+\begin{itemize}
+\item El recorte simétrico conserva el equilibrio entre pesos positivos y negativos, pero reduce la apertura efectiva.
+\end{itemize}
+\takeaway{Motivación: aprender apodizaciones adaptadas a la geometría disponible.}
+\source{Figura del artículo de Tecniacústica 2026. Líneas rojas: límites del array; línea gris: centro de la subapertura.}
+\note{La figura muestra la apodización de media cero de NSI en dos posiciones laterales. En (a), x=-17,1 mm, la restricción de simetría reduce la apertura para mantener el equilibrio entre los pesos. En (b), x=-6,1 mm, la subapertura no está recortada. Distinguir esta reducción simétrica de un recorte unilateral que desequilibraría los pesos y alteraría la cancelación.}
 \end{frame}
 
 % 07 -----------------------------------------------------------------
@@ -275,6 +280,24 @@ Departamento de Estructura de la Materia, Física Térmica y Electrónica.
 \note{La estancia está en curso en la fecha de preparación. No presentar el periodo completo como ya realizado.}
 \end{frame}
 
+% Vista anatómica: recorte del panel de la primera fila, segunda columna.
+% Original: 1897 x 757 px, 72 dpi. Región: x=[481,940), y=[8,372).
+\begin{frame}{Vista apical de cuatro cámaras (A4C)}
+\relax
+\begin{columns}[c,onlytextwidth]
+\column{.53\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=4.9cm,keepaspectratio,trim={481bp 385bp 957bp 8bp},clip]{heart_normal_tte_views_original.jpg}
+\column{.43\textwidth}
+\textbf{Contenido anatómico}
+\par Ventrículos izquierdo y derecho, aurículas izquierda y derecha, y válvulas mitral y tricúspide.
+\par\vspace{3mm}
+\textbf{Objetivo del guiado}
+\par Ajustar la posición y la orientación de la sonda para obtener una vista anatómicamente adecuada.
+\end{columns}
+\source{Ilustración: Patrick J. Lynch y C. Carl Jaffe. \href{https://commons.wikimedia.org/wiki/File:Heart_normal_tte_views.jpg}{Wikimedia Commons}. \href{https://creativecommons.org/licenses/by/2.5/}{CC BY 2.5}. Recorte de la primera fila, segunda columna.}
+\end{frame}
+
 % 17 -----------------------------------------------------------------
 \begin{frame}{Guiado: estimar una corrección de la sonda}
 \relax
@@ -300,21 +323,40 @@ $T_{\star,v}$: una pose válida para la vista $v$ en ese paciente.
 % 18 -----------------------------------------------------------------
 \begin{frame}{Antecedentes: cómo se aprende el guiado}
 \relax
-\small
-\renewcommand{\arraystretch}{1.35}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.24\textwidth}>{\raggedright\arraybackslash}p{.33\textwidth}>{\raggedright\arraybackslash}p{.35\textwidth}@{}}
-\toprule
-\textbf{Enfoque} & \textbf{Señal de aprendizaje} & \textbf{Ejemplos revisados}\\
-\midrule
-Supervisado & Correcciones geométricas o maniobras etiquetadas & Cardiac Copilot, EchoWorld, UltraStar; Jeong (multitarea)\\
-Por refuerzo & Recompensa al actuar en un entorno & Jeong (Agentic Echocardiography); Cao\\
-\bottomrule
-\end{tabular}\par
-\par\vspace{5mm}
-\normalsize
-La comparación también exige revisar qué datos necesita cada modelo durante su uso: imágenes, historial y, en algunos protocolos, poses o movimientos relativos.
-\source{Referencias y detalles en la sección 3.2 de la memoria: Jiang et al. (2024), Yue et al. (2025), Wang et al. (2026), Jeong et al. (2026) y Cao et al. (2026).}
-\note{EchoWorld distingue un protocolo de imagen única y otro secuencial. No atribuir a todos los métodos revisados un funcionamiento basado exclusivamente en imágenes. La clasificación de maniobras de Jeong es supervisada y se distingue de su trabajo por refuerzo.}
+\setlength{\parskip}{2pt}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,
+ box/.style={draw=navy!45,rounded corners=2pt,align=center,minimum height=.65cm,font=\fontsize{9}{10}\selectfont,inner sep=4pt},
+ flow/.style={->,>=stealth,thick,draw=teal},
+ labeltext/.style={align=left,font=\fontsize{9}{10}\selectfont,text=navy}]
+\node[anchor=west,text=teal,font=\bfseries] at (0,.05) {Aprendizaje supervisado};
+\node[box,text width=2.7cm] (si) at (1.3,-.75) {Imágenes\\o imágenes + pose};
+\node[box,text width=1.45cm] (sm) at (4.0,-.75) {Modelo};
+\node[box,text width=1.65cm] (sp) at (6.5,-.75) {Maniobra\\predicha};
+\node[box,text width=3.15cm,draw=teal] (sl) at (10.55,-.75) {Comparación con la\\\textbf{maniobra correcta}\\\textbf{etiquetada}};
+\draw[flow] (si)--(sm);
+\draw[flow] (sm)--(sp);
+\draw[flow] (sp)--(sl);
+\draw[flow] (sl.south)--(10.55,-1.45)--node[below,font=\fontsize{8}{9}\selectfont]{Ajustar el modelo para aprender las maniobras etiquetadas}(4,-1.45)--(sm.south);
+\node[anchor=west,text=teal,font=\bfseries] at (0,-2.10) {Aprendizaje por refuerzo};
+\node[box,text width=2.7cm] (ri) at (1.3,-2.85) {Imágenes\\o imágenes + pose};
+\node[box,text width=1.45cm] (rm) at (4,-2.85) {Modelo};
+\node[box,text width=1.65cm] (ra) at (6.5,-2.85) {Movimiento};
+\node[box,text width=2.9cm] (re) at (10.55,-2.85) {Entorno simulado\\Nueva vista};
+\draw[flow] (ri)--(rm);
+\draw[flow] (rm)--(ra);
+\draw[flow] (ra)--(re);
+\node[box,text width=2.9cm,draw=teal,fill=teal!5,font=\fontsize{8}{9}\selectfont] (reward) at (10.55,-4.10) {\textbf{Recompensa}\\Acercamiento\\a la vista objetivo};
+\draw[flow] (re.south)--(reward.north);
+\draw[flow] (10.55,-3.48)--node[below,font=\fontsize{8}{9}\selectfont]{Nueva observación para el siguiente movimiento}(1.3,-3.48)--(ri.south);
+\fill[teal] (10.55,-3.48) circle (1.2pt);
+\node[labeltext,anchor=north west,text width=8.1cm] at (0,-3.98) {\textbf{Entrenamiento:} aprender secuencias de movimientos que maximicen la \textbf{recompensa acumulada}.};
+\end{tikzpicture}
+\par\vspace{1mm}
+\raggedright
+{\fontsize{10}{11}\selectfont\color{teal}\bfseries Nuestro objetivo: usar solo imágenes, sin un instrumento externo para medir la posición y orientación de la sonda.\par}
+{\fontsize{8}{9}\selectfont Las entradas dependen del método. Durante el entrenamiento, las poses del simulador pueden generar etiquetas, calcular recompensas o evaluar movimientos sin ser una entrada del modelo.\par}
+\note{Esquemas de entrenamiento. En supervisado, la maniobra de referencia proporciona la señal para ajustar el modelo. En refuerzo, una función de recompensa valora el acercamiento al objetivo y el modelo aprende secuencias que maximicen la recompensa acumulada. Las imágenes o las imágenes y poses son entradas según el método. Nuestro objetivo de uso es únicamente visual, sin instrumentación externa de seguimiento. Referencias: sección 3.2 de la memoria anual 2026.}
 \end{frame}
 
 % 19 -----------------------------------------------------------------
