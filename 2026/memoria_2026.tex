@@ -223,9 +223,9 @@ El alcance del TFM fue una prueba de concepto en simulación con reflectores pun
 \subsection{Diseño y combinación de múltiples apodizaciones mediante redes neuronales}\label{sec:tecniacustica}
 \begingroup
 \emergencystretch=2em
-Esta subsección sintetiza la continuación del TFM presentada en Tecniacústica 2026~\cite{CosarinskyTecniacustica2026}. El artículo completo, con los detalles del método y de su evaluación, se incluye en el Anexo~\ref{anexo:tecniacustica}.
+Esta subsección sintetiza la continuación del TFM, presentada en el congreso Tecniacústica 2026~\cite{CosarinskyTecniacustica2026}. El artículo completo, con los detalles del método y de su evaluación, se incluye en el Anexo~\ref{anexo:tecniacustica}.
 
-El trabajo amplió el diseño de una única apodización a un conjunto de apodizaciones aprendidas y una regla de combinación también neuronal, tomando como referencia la estructura de NSI. La motivación fue la pérdida de apertura efectiva que se produce cerca de los extremos del array cuando, para conservar el equilibrio de los pesos de NSI, la subapertura se reduce de forma simétrica. Se buscó explorar si el aprendizaje conjunto de los pesos de recepción y de la combinación de imágenes permitía mejorar la respuesta en esas regiones.
+El trabajo amplió el diseño de una única apodización a un conjunto de apodizaciones aprendidas y una regla de combinación también mediante red neuronal, tomando como referencia la estructura de NSI. La motivación fue la pérdida de apertura efectiva que se produce cerca de los extremos del array cuando, para conservar el equilibrio de los pesos de NSI, la subapertura se reduce de forma simétrica. Se buscó explorar si el aprendizaje conjunto de los pesos de recepción y de la combinación de imágenes permitía mejorar la respuesta en esas regiones.
 
 La arquitectura incorpora dos redes. La primera es una INR que genera $M$ funciones de apodización $a_m(x,z,x_{elem};\omega)$ a partir de las coordenadas del píxel y del elemento receptor. Cada función pondera las señales retardadas para producir una imagen DAS:
 \begin{equation}
@@ -238,7 +238,7 @@ Las envolventes de estas imágenes se combinan píxel a píxel mediante una segu
   I_{\mathrm{final}}(x,z)=g_{\phi}\left(|I_1(x,z)|,\ldots,|I_M(x,z)|\right),
   \label{eq:mixer_combinacion}
 \end{equation}
-donde $\omega$ y $\phi$ representan los parámetros entrenables de ambas redes. De este modo, se aprende tanto la generación de las imágenes intermedias como su combinación no lineal. Una vez entrenada la INR, las apodizaciones dependen de la geometría y se aplican a las distintas adquisiciones. El \textit{mixer} se mantuvo pequeño para limitar el coste adicional de cálculo. La Figura~\ref{fig:tecni_arquitectura} resume el proceso.
+donde $\omega$ y $\phi$ representan los parámetros entrenables de ambas redes. De este modo, se aprende tanto la generación de las imágenes intermedias como su combinación no lineal. El \textit{mixer} se mantuvo pequeño para limitar el coste adicional de cálculo. La Figura~\ref{fig:tecni_arquitectura} resume el proceso.
 
 \begin{figure}[H]
   \centering
@@ -249,7 +249,7 @@ donde $\omega$ y $\phi$ representan los parámetros entrenables de ambas redes. 
 
 El entrenamiento utilizó señales simuladas con PyMUST~\cite{Bernardino2024PyMUST}, en un medio homogéneo con reflectores puntuales y con la configuración de sonda de PICMUS~\cite{liebgott2016picmus}. Se simularon once ondas planas entre $-5^\circ$ y $5^\circ$. Como en el TFM, las referencias de entrenamiento se construyeron multiplicando una reconstrucción DAS por una máscara gaussiana centrada en los reflectores. La optimización minimizó el error absoluto medio respecto a estas referencias. Además, cada apodización aprendida se multiplicó por una ventana de Hanning de apertura dinámica con $F_{\#}=1$, para restringir los pesos hacia los extremos de la apertura. Entre las configuraciones ensayadas se seleccionó una INR con tres capas ocultas de 16, 8 y 4 neuronas y dos canales de apodización, junto con un \textit{mixer} de dos capas ocultas.
 
-La evaluación comparó el método con DAS de apodización Hanning dinámica y con NSI, utilizando una grilla simulada de reflectores y una adquisición experimental de un fantoma PICMUS~\cite{liebgott2016picmus}. En simulación, el método mejoró la resolución lateral respecto a DAS, aunque NSI mantuvo un mejor comportamiento en la mayor parte de la imagen. La mejora más relevante se localizó en un reflector próximo al extremo lateral del array, donde el método aprendido obtuvo una respuesta más estrecha que NSI. Asimismo, en la columna de reflectores situada en $x=18$~mm, próxima al borde del array en $x=19.5$~mm, NSI presentó una caída de amplitud al aumentar la profundidad que no se observó con el método propuesto ni con DAS (Figura~\ref{fig:tecni_simulacion}).
+La evaluación comparó el método con DAS de apodización Hanning dinámica y con NSI, utilizando una grilla simulada de reflectores y una adquisición experimental de un fantoma del dataset PICMUS~\cite{liebgott2016picmus}. En simulación, el método mejoró la resolución lateral respecto a DAS, aunque NSI mantuvo un mejor comportamiento en la mayor parte de la imagen. La mejora más relevante se localizó en un reflector próximo al extremo lateral del array, donde el método aprendido obtuvo una respuesta más estrecha que NSI. Asimismo, en la columna de reflectores situada en $x=18$~mm, próxima al borde del array en $x=19.5$~mm, NSI presentó una caída de amplitud al aumentar la profundidad que no se observó con el método propuesto ni con DAS (Figura~\ref{fig:tecni_simulacion}).
 
 \begin{figure}[H]
   \centering
@@ -284,7 +284,7 @@ La conexión con el trabajo previo reside en el uso de modelos de aprendizaje au
 \subsection{Revisión bibliográfica y antecedentes}\label{sec:revision_guiado}
 Como parte de las actividades iniciales de la estancia, se realizó una revisión de estrategias de aprendizaje para el guiado en ecocardiografía. Para comparar los antecedentes, conviene definir primero qué información se obtiene durante la exploración y qué corrección se pretende estimar.
 
-Durante una adquisición se obtiene una secuencia de imágenes ecográficas $\mathcal{I}_1,\ldots,\mathcal{I}_t$. Cada imagen $\mathcal{I}_t$ corresponde a una posición y una orientación de la sonda, conjuntamente denominadas \textit{pose}. Esta pose existe físicamente aunque no se disponga de un sistema que la mida. Si se expresa respecto a un sistema de referencia fijo $F$, puede representarse mediante la transformación rígida
+Durante una adquisición se obtiene una secuencia de imágenes ecográficas $\mathcal{I}_1,\ldots,\mathcal{I}_t$. Cada imagen $\mathcal{I}_t$ corresponde a una posición y una orientación de la sonda, conjuntamente denominadas \textit{pose}. Si se expresa respecto a un sistema de referencia fijo $F$, puede representarse mediante la transformación rígida
 \begin{equation}
   T_t=\begin{pmatrix}R_t & \mathbf{p}_t\\ \mathbf{0}^{\mathsf T} & 1\end{pmatrix},
   \label{eq:guiado_pose}
