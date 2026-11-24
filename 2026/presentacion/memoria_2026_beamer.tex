@@ -324,39 +324,37 @@ $T_{\star,v}$: una pose válida para la vista $v$ en ese paciente.
 \begin{frame}{Antecedentes: cómo se aprende el guiado}
 \relax
 \setlength{\parskip}{2pt}
+{\small\textbf{Entrada del modelo, según el método:} imágenes o imágenes + pose.\par}
+\vspace{2mm}
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm,
- box/.style={draw=navy!45,rounded corners=2pt,align=center,minimum height=.65cm,font=\fontsize{9}{10}\selectfont,inner sep=4pt},
+ box/.style={draw=navy!40,rounded corners=2pt,align=center,minimum height=.65cm,font=\fontsize{9}{10}\selectfont,inner sep=5pt},
  flow/.style={->,>=stealth,thick,draw=teal},
- labeltext/.style={align=left,font=\fontsize{9}{10}\selectfont,text=navy}]
-\node[anchor=west,text=teal,font=\bfseries] at (0,.05) {Aprendizaje supervisado};
-\node[box,text width=2.7cm] (si) at (1.3,-.75) {Imágenes\\o imágenes + pose};
-\node[box,text width=1.45cm] (sm) at (4.0,-.75) {Modelo};
-\node[box,text width=1.65cm] (sp) at (6.5,-.75) {Maniobra\\predicha};
-\node[box,text width=3.15cm,draw=teal] (sl) at (10.55,-.75) {Comparación con la\\\textbf{maniobra correcta}\\\textbf{etiquetada}};
-\draw[flow] (si)--(sm);
+ caption/.style={font=\fontsize{9}{10}\selectfont,text=navy,anchor=west}]
+\node[anchor=west,text=teal,font=\bfseries] at (0,0) {Aprendizaje supervisado};
+\node[box,text width=1.8cm] (sm) at (1.2,-.65) {Modelo};
+\node[box,text width=2cm] (sp) at (4.5,-.65) {Maniobra predicha};
+\node[box,text width=4.4cm,draw=teal] (sl) at (10,-.65) {Comparación con la\\\textbf{maniobra correcta etiquetada}};
 \draw[flow] (sm)--(sp);
 \draw[flow] (sp)--(sl);
-\draw[flow] (sl.south)--(10.55,-1.45)--node[below,font=\fontsize{8}{9}\selectfont]{Ajustar el modelo para aprender las maniobras etiquetadas}(4,-1.45)--(sm.south);
-\node[anchor=west,text=teal,font=\bfseries] at (0,-2.10) {Aprendizaje por refuerzo};
-\node[box,text width=2.7cm] (ri) at (1.3,-2.85) {Imágenes\\o imágenes + pose};
-\node[box,text width=1.45cm] (rm) at (4,-2.85) {Modelo};
-\node[box,text width=1.65cm] (ra) at (6.5,-2.85) {Movimiento};
-\node[box,text width=2.9cm] (re) at (10.55,-2.85) {Entorno simulado\\Nueva vista};
-\draw[flow] (ri)--(rm);
+\draw[flow] (sl.south)--(10,-1.3)--node[below,font=\fontsize{8}{9}\selectfont]{Ajustar el modelo para aprender las maniobras etiquetadas}(1.2,-1.3)--(sm.south);
+\node[anchor=west,text=teal,font=\bfseries] at (0,-2.05) {Aprendizaje por refuerzo};
+\node[box,text width=1.8cm] (rm) at (1.2,-2.85) {Modelo};
+\node[box,text width=1.65cm] (ra) at (4.2,-2.85) {Movimiento};
+\node[box,text width=2.7cm] (re) at (7.4,-2.85) {Entorno simulado\\\textbf{Nueva vista}};
+\node[box,text width=2.5cm,draw=teal,fill=teal!5] (reward) at (11.15,-2.85) {\textbf{Recompensa}\\Acercamiento\\a la vista objetivo};
 \draw[flow] (rm)--(ra);
 \draw[flow] (ra)--(re);
-\node[box,text width=2.9cm,draw=teal,fill=teal!5,font=\fontsize{8}{9}\selectfont] (reward) at (10.55,-4.10) {\textbf{Recompensa}\\Acercamiento\\a la vista objetivo};
-\draw[flow] (re.south)--(reward.north);
-\draw[flow] (10.55,-3.48)--node[below,font=\fontsize{8}{9}\selectfont]{Nueva observación para el siguiente movimiento}(1.3,-3.48)--(ri.south);
-\fill[teal] (10.55,-3.48) circle (1.2pt);
-\node[labeltext,anchor=north west,text width=8.1cm] at (0,-3.98) {\textbf{Entrenamiento:} aprender secuencias de movimientos que maximicen la \textbf{recompensa acumulada}.};
+\draw[flow] (re)--(reward);
+\draw[flow] (re.south)--(7.4,-3.5)--node[below,font=\fontsize{8}{9}\selectfont]{Nueva observación}(1.2,-3.5)--(rm.south);
+\node[caption] at (0,-4.12) {Aprender secuencias que maximicen la \textbf{recompensa acumulada}.};
 \end{tikzpicture}
 \par\vspace{1mm}
 \raggedright
-{\fontsize{10}{11}\selectfont\color{teal}\bfseries Nuestro objetivo: usar solo imágenes, sin un instrumento externo para medir la posición y orientación de la sonda.\par}
-{\fontsize{8}{9}\selectfont Las entradas dependen del método. Durante el entrenamiento, las poses del simulador pueden generar etiquetas, calcular recompensas o evaluar movimientos sin ser una entrada del modelo.\par}
-\note{Esquemas de entrenamiento. En supervisado, la maniobra de referencia proporciona la señal para ajustar el modelo. En refuerzo, una función de recompensa valora el acercamiento al objetivo y el modelo aprende secuencias que maximicen la recompensa acumulada. Las imágenes o las imágenes y poses son entradas según el método. Nuestro objetivo de uso es únicamente visual, sin instrumentación externa de seguimiento. Referencias: sección 3.2 de la memoria anual 2026.}
+{\fontsize{10}{12}\selectfont\color{teal}\bfseries Nuestro objetivo: solo imágenes, sin medición externa de la pose.\par}
+\vspace{1mm}
+{\fontsize{8}{10}\selectfont En entrenamiento, las poses del simulador pueden generar etiquetas, calcular recompensas o evaluar movimientos, sin ser entradas del modelo.\par}
+\note{Esquemas de entrenamiento. La entrada, común a ambos esquemas y dependiente del método, puede ser imágenes o imágenes y pose. En supervisado se aprende a reproducir maniobras etiquetadas. En refuerzo, tras cada movimiento, el simulador produce una nueva vista y se obtiene una recompensa que valora el acercamiento al objetivo. El modelo aprende secuencias que maximicen la recompensa acumulada. Nuestro objetivo de uso es únicamente visual, sin instrumentación externa de seguimiento. Las poses conocidas del simulador pueden utilizarse durante el entrenamiento sin constituir entradas del modelo. Referencias: sección 3.2 de la memoria anual 2026.}
 \end{frame}
 
 % 19 -----------------------------------------------------------------
